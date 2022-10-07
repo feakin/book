@@ -8,7 +8,7 @@
 
 # User Guide
 
-- [Chapter 1](./guide/chapter_1.md)
+- [Chapter 1 (TBD)](./guide/chapter_1.md)
 
 # Reference Guide
 
@@ -17,6 +17,11 @@
 # FAQ
 
 - [FAQ](./faq/README.md)
+
+# Development Guide
+
+- [Development Guide](./development/README.md)
+  - [Setup](./development/setup.md)
 
 -----------
 
