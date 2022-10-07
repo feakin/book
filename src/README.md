@@ -1,5 +1,7 @@
 # Feakin 介绍
 
+inspired by: [TypeFlow](https://zhuanlan.zhihu.com/p/341089716)
+
 Feakin 是一个软件架构设计与开发标准化方法，基于 DDD （领域驱动设计）与函数式编程思想。
 
 ![Design Principles](../images/design-principles.svg)
