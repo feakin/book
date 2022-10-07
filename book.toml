@@ -4,6 +4,8 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Feakin"
+
+[output.html]
 git-repository-url = "https://github.com/feakin/book"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/feakin/book/edit/master/{path}"
