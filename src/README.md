@@ -1,10 +1,14 @@
 # Feakin 介绍
 
-Feakin 是一个基于 DDD 与函数式编程思想的软件架构与开发标准化方法。 主要组成部分：
+Feakin 是一个软件架构设计与开发标准化方法，基于 DDD （领域驱动设计）与函数式编程思想。
 
-- Fkl 是 Feakin 提供的一个架构设计语言，用于描述软件系统的架构。Feakin 语言的设计目标是： 软件系统描述与实现的一致性。
-- Feakin Intellij Plugin 是 Feakin 的一个 IntelliJ 插件，用于支持 Feakin 语言的开发与调试。
-- Feakin Web 提供了一个架构设计与可视化协作工具。它的目标是让架构师能够更加高效地进行架构设计与可视化协作。
+![Design Principles](../images/design-principles.svg)
+
+Feakin 主要组成部分：
+
+- Fkl 是 Feakin 提供的一个架构设计语言，用于描述软件系统的架构 —— 确保**软件系统描述与实现的一致性**。
+- Feakin Intellij Plugin 是 Feakin 的一个 IntelliJ 插件，用于将 FKL 集成到项目中。
+- Feakin Web 提供了一个架构设计与可视化协作工具，让架构师能够更加高效地进行架构设计与可视化协作。
 
 设计理念：
 
@@ -18,7 +22,7 @@ Feakin 是一个基于 DDD 与函数式编程思想的软件架构与开发标�
 
 ![Feakin Impl Sample](../images/feakin-intellij-plugin.png)
 
-示例 FKL：
+FKL 示例：
 
 ```feakin
 impl CinemaCreated {
@@ -62,7 +66,7 @@ Options:
   -h, --help  Print help information
 ```
 
-示例：
+CLI 示例：
 
 ```shell
 fkl gen --path /Users/phodal/IdeaProjects/untitled/simple.fkl --impl CinemaCreated
@@ -77,7 +81,7 @@ public Cinema creatCinema() { }
 
 ![Feakin Web](../images/feakin-web.png)
 
-FKL 示例：
+对应 FKL 示例：
 
 ```feakin
 ContextMap TicketBooking {
