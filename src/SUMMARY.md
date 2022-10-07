@@ -14,10 +14,6 @@
 
 - [Feakin DSL](./reference/fkl-dsl-overview.md)
 
-# FAQ
-
-- [FAQ](./faq/README.md)
-
 # Development Guide
 
 - [Development Guide](./development/README.md)
@@ -27,6 +23,10 @@
   - [CRDT](./development/crdt.md)
 
 - [Intellij Plugin](./development/intellij-plugin.md)
+
+# FAQ
+
+- [FAQ](./faq/README.md)
 
 -----------
 
