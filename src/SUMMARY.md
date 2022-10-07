@@ -1,13 +1,23 @@
 # Summary
 
-## Quick Start
+[Introduction](README.md)
 
-- [Introduction](./0-introduction.md)
+# Quick Start
 
-## User Guide
+- [Quick Start](./quick-start.md)
 
-- [Chapter 1](./chapter_1.md)
+# User Guide
 
-## Reference Guide
+- [Chapter 1](./guide/chapter_1.md)
 
-- [Feakin DSL](./fkl-dsl-overview.md)
+# Reference Guide
+
+- [Feakin DSL](./reference/fkl-dsl-overview.md)
+
+# FAQ
+
+- [FAQ](./faq/README.md)
+
+-----------
+
+[Contributors](misc/contributors.md)
