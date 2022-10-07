@@ -2,9 +2,9 @@
 
 [Introduction](README.md)
 
-# Quick Start
+[Quick Start](./quick-start.md)
 
-- [Quick Start](./quick-start.md)
+[Design Principles](./design-principles.md)
 
 # User Guide
 
@@ -22,6 +22,11 @@
 
 - [Development Guide](./development/README.md)
   - [Setup](./development/setup.md)
+
+- [Collaboration](./development/collaboration.md)
+  - [CRDT](./development/crdt.md)
+
+- [Intellij Plugin](./development/intellij-plugin.md)
 
 -----------
 
