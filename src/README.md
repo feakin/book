@@ -8,7 +8,7 @@ Feakin 是一个软件架构设计与开发标准化方法，基于 DDD （领�
 
 Feakin 主要组成部分：
 
-- Fklang 是 Feakin 提供的一个架构设计语言，用于描述软件系统的架构 —— 确保**软件系统描述与实现的一致性**。
+- Fklang 是一个架构设计 DSL，以确保软件系统描述与实现的一致性。通过显式化的软件架构设计，用于支持 AI 代码生成系统的嵌入。
 - Feakin Intellij Plugin 是 Feakin 的一个 IntelliJ 插件，用于将 Feakin/Fklang 集成到项目中。
 - Feakin Web 提供了一个架构设计与可视化协作工具，让架构师能够更加高效地进行架构设计与可视化协作。
 
