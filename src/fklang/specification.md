@@ -1,4 +1,4 @@
-# Feakin Knowledge Language Spec
+# Feakin Specification
 
 Fkl provide a two-way binding between design-implementation.
 

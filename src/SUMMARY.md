@@ -10,11 +10,11 @@
 
 - [Chapter 1 - DDD in Feakin](./guide/chapter_1.md)
 - [Chapter 2 - Binding Implementation](./guide/chapter_2.md)
-- [Chapter 3 - Code generator](./guide/chapter_3.md)
+- [Chapter 3 - Fklang Code generator](./guide/chapter_3.md)
 
 # Reference Guide
 
-- [Feakin DSL](./reference/fkl-dsl-overview.md)
+- [Fklang Specification](./fklang/specification.md)
 
 # Development Guide
 
@@ -28,9 +28,9 @@
   - [GIM](./development/graph-gim.md)
   - [Exporter](./development/graph-exporter.md)
   - [Render](./development/graph-render.md)
-- [FKL](./development/fkl.md)
-  - [FKL Parser](./development/fkl-parser.md)
-  - [FKL Code Generator](./development/fkl-code-gen.md)
+- [Fklang](./fklang/fklang.md)
+  - [Fklang Parser](./fklang/fklang-parser.md)
+  - [Fklang Code Generator](./fklang/fklang-code-gen.md)
 
 - [Intellij Plugin](./development/intellij-plugin.md)
 - [Monaco Editor](./development/monaco-editor.md)

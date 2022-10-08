@@ -1,4 +1,4 @@
-# FKL Code Generator
+# Fklang Code Generator
 
 Sample
 

@@ -1,7 +1,8 @@
-# FKL Code Generator
+# Fklang Code Generator
 
 ## Java
 
 based on: [https://github.com/udoprog/genco](https://github.com/udoprog/genco)
 
 ## AWS Lambda (TBD)
+
