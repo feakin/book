@@ -1,17 +1,21 @@
-# Feakin Specification
+# Fklang Specification
 
-Fkl provide a two-way binding between design-implementation.
+> Fklang provide a two-way binding between design-implementation for architecture.
 
-Indesign:
+Basic Works:
 
 - DDD syntax. DDD strategy and tactic description.
-- DomainEvent implementation syntax. for generate implementation of DomainEvent.
-- Binding syntax. mapping DSL to SourceCode
-- Layered syntax. layered structured syntax.
-- Description syntax. description design in fake code.
+- DomainEvent Implementation. for generate implementation of DomainEvent.
+
+In dev:
+
+- Binding. mapping DSL to SourceCode
+- SourceSet Plugin. third-part integration, like PlantUml, Swagger.
 
 TBD:
 
+- Layered syntax. layered structured syntax.
+- Description syntax. description design in fake code.
 - Typedef (TBD). for DDD syntax type bootstrapping.
 - Style (TBD). for design visualization UI.
 
@@ -79,21 +83,6 @@ DomainLanguage(sourceSet = TicketLang)
 
 Subscribe / Publish / Event / Flow
 
-### Default impl config
-
-```kotlin
-default impl {
-  techstack {
-    language = "Kotlin"
-    framework = "Spring"
-    message = "Kafka" 
-    dao = "JPA"
-    cache = "Redis"
-    search = "ElasticSearch"
-  }
-}
-```
-
 ### API
 
 - input -> request
@@ -109,7 +98,6 @@ compare to `given-when-then`.
 impl CinemaCreated {
   endpoint {
     POST "${uri}/post";
-    contentType: application/json;
     authorization: Basic {{username}} {{password}};
     request {
       "id": {{$uuid}},
@@ -117,15 +105,6 @@ impl CinemaCreated {
       "ts": {{$timestamp}},
       "value": "content"
     }
-    expect {
-      "status": 200
-      "data": {
-        "id": {{$uuid}},
-        "price": {{$randomInt}},
-        "ts": {{$timestamp}},
-        "value": "content"
-      }
-    };
   }
   
   // created in ApplicationService
@@ -151,17 +130,10 @@ impl CinemaCreated {
       }
     } 
   }
-
-  validate {
-    pre {
-    
-    }
-    post {
-    
-    }
-  }
 }
 ```
+
+expect generate code will be:
 
 ```java
 // get_user_by_user_id from JPA
@@ -175,36 +147,36 @@ public User getUserByUserId(String userId) {
 }
 ```
 
+with API testing
+
 ```kotlin
 impl CinemaCreated {
-  """bla bla"""
-  // or binding to ?
-  // binding: aggregate().
-
-  // location with modules
-  // default to "root" or ":"
-  target: "${DomainObject}:com.example.book"
-  // ?
   qualified: "${moduleName}:com.example.book", 
   
   endpoint {
-    // message map
-    notication ?
-    // RPC API
-    // HTTP API ?
-    host: "http://localhost:8080"
-    url: "/api/v1/books"
-    
-    method: "POST"  
-      
-    test {
+    GET "/book/{id}";
+    authorization: Basic admin admin;
+    response: Cinema;
+    request: CreateBookRequest;
+
+    // testForLocal
+    env "Local" {
        host: ""
        token: ""
+
+       expect {
+        "status": 200
+        "data": {
+          "id": {{$uuid}},
+          "price": {{$randomInt}},
+          "ts": {{$timestamp}},
+          "value": "content"
+        }
     }
   }
 
-  entity: Book
-  input CreateBookRequest {
+  // full processing (TBD)
+  request CreateBookRequest {
     struct {
       "title" : "string",
       "author" : "string",
@@ -228,42 +200,57 @@ impl CinemaCreated {
   middle {
     via User get/update/delete/post userId 
     via Kafka send "book.created"
-    // send "book.created" to Kafka
   }
 
-  output CreateBookResponse {
+  response CreateBookResponse {
      struct {
         "id" : "number"
      }
      validate  { }
   } 
   
-  // contract-based development
+  // with source side (TBD)
   output CreateBookResponse(xpath="");
   input CreateBookResponse(sourceSet="PetSwagger" location="");
 }
 ```
 
+
+### Default impl config (TBD)
+
+```kotlin
+config impl {
+  techstack {
+    language = "Kotlin"
+    framework = "Spring"
+    message = "Kafka" 
+    dao = "JPA"
+    cache = "Redis"
+    search = "ElasticSearch"
+  }
+}
+```
+
 ## Binding
 
-binding source code to Context Map
+> Binding provide a way to binding source code to Context
 
 ```
-Context Ticket {
-
+Aggregate Ticket {
+ 
+  binding {
+     ....
+  }
 }
 
 binding Ticket {
-  language: "Kotlin",
-  layered: DDDLayered,
-  qualified: "${moduleName}:se.citerus.dddsample.domain.model",
-  // equals
-  moduleName: "domain"
-  package: "se.citerus.dddsample.domain.model"
+  event: TicketCreated, TicketUpdated, TicketDeleted; 
+  language: "Kotlin";
+  qualified: "subdirectory?/${moduleName}:com.phodal.coco";
 }
 ```
 
-## SourceSet
+## SourceSet (TBD)
 
 > SourceSet is design for support 3rd-party dsl, like PlantUML, Swagger.yaml
 
@@ -291,7 +278,7 @@ SourceSet DddUml {
 SourceSet(type="puml", file="ddd.puml")
 ```
 
-### Swagger API
+### Swagger API (TBD)
 
 file_type: Yaml, JSON
 
@@ -310,7 +297,7 @@ SourceSet PetSwagger {
 }
 ```
 
-### UniqueLanguage model ?
+### UniqueLanguage model ? (TBD)
 
 file_type: CSV, JSON, Markdown ?
 
@@ -322,7 +309,7 @@ SourceSet TicketLang {
 }
 ```
 
-## Layered
+## Layered (TBD)
 
 > Layered is design for decl
 
@@ -335,8 +322,10 @@ SourceSet TicketLang {
 | layer_item_entry | :      | package_decl                                                |
 | package_decl     | :      | 'package' ':' [ string ]                                    | 
 
+can be guarding for model
+
 ```kotlin
-layered default {
+layered DDD {
   dependency {
     "interface" -> "application"
     "interface" -> "domain"
@@ -359,7 +348,7 @@ layered default {
 }
 ```
 
-## Description
+## Description (TBD)
 
 > Description can provide design in fake code way.
 
