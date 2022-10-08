@@ -237,18 +237,23 @@ config impl {
 
 ```
 Aggregate Ticket {
- 
+  DomainEvent: TicketCreated, TicketUpdated, TicketDeleted; 
+
   binding {
      ....
   }
 }
 
 binding Ticket {
-  event: TicketCreated, TicketUpdated, TicketDeleted; 
+  Event: TicketCreated, TicketUpdated, TicketDeleted;
   language: "Kotlin";
+  // or by scan
   qualified: "subdirectory?/${moduleName}:com.phodal.coco";
+  package: "com.phodal.coco";
 }
 ```
+
+If no config, will use default config by scanner?
 
 ## SourceSet (TBD)
 

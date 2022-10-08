@@ -31,6 +31,7 @@
 - [Fklang](./fklang/fklang.md)
   - [Fklang Parser](./fklang/fklang-parser.md)
   - [Fklang Code Generator](./fklang/fklang-code-gen.md)
+  - [Fklang Binding](./fklang/fklang-code-binding.md)
 
 - [Intellij Plugin](./development/intellij-plugin.md)
 - [Monaco Editor](./development/monaco-editor.md)
