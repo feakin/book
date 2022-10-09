@@ -239,18 +239,15 @@ config impl {
 Aggregate Ticket {
   DomainEvent: TicketCreated, TicketUpdated, TicketDeleted; 
 
-  binding {
-     Event: TicketCreated, TicketUpdated, TicketDeleted;
-     ....
-  }
+  binding TicketBinding;
 }
 
 // or to service ?
-binding Ticket {
-  Event: TicketCreated, TicketUpdated, TicketDeleted;
-
-  // extra information
-  extra: extra {
+binding TicketBinding {
+  DomainEvent: TicketCreated, TicketUpdated, TicketDeleted; 
+  
+  extra {
+    baseUrl: "/ticket";
     language: "Java";
     package: "com.phodal.coco";
   }
