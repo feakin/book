@@ -240,16 +240,20 @@ Aggregate Ticket {
   DomainEvent: TicketCreated, TicketUpdated, TicketDeleted; 
 
   binding {
+     Event: TicketCreated, TicketUpdated, TicketDeleted;
      ....
   }
 }
 
+// or to service ?
 binding Ticket {
   Event: TicketCreated, TicketUpdated, TicketDeleted;
-  language: "Kotlin";
-  // or by scan
-  qualified: "subdirectory?/${moduleName}:com.phodal.coco";
-  package: "com.phodal.coco";
+
+  // extra information
+  extra: extra {
+    language: "Java";
+    package: "com.phodal.coco";
+  }
 }
 ```
 
@@ -272,15 +276,15 @@ If no config, will use default config by scanner?
 file_type: uml, puml
 
 ```
-Struct(sourceSet=DddUml, location="")
-
-SourceSet DddUml {
-  type: "puml",
-  file: PlantUml
+sourceSet Extension {
+  feakin {
+    srcDir = ["src/main/resources/uml"]
+  }
+  puml {
+    parser = "PlantUML"
+    srcDir = ["src/main/resources/uml"]
+  }
 }
-
-// or
-SourceSet(type="puml", file="ddd.puml")
 ```
 
 ### Swagger API (TBD)
@@ -401,6 +405,15 @@ description FakeCode {
 | string      | string                          |
 | number      | Any number, can be float or int |
 | optional ?  | Optional type ?                 |
+
+### Variable
+
+```
+def JavaSource: extra {
+  language: "Java";
+  package: "com.phodal.coco";
+}
+```
 
 ### Container
 
