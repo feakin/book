@@ -349,7 +349,7 @@ layered DDD {
     package: "com.example.application"
   }
   layer infrastructure {
-     package: "com.example.infrastructure"
+    package: "com.example.infrastructure"
   }
 }
 ```
