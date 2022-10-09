@@ -4,12 +4,15 @@ inspired by: [TypeFlow](https://zhuanlan.zhihu.com/p/341089716)
 
 Feakin 是一个软件架构设计与开发标准化方法，基于 DDD （领域驱动设计）与函数式编程思想。
 
+TODO：需要取个新的开发方法名字，Feakin 是一个产品名字。
+
 ![Design Principles](../images/design-principles.svg)
 
 Feakin 主要组成部分：
 
 - Fklang 是一个架构设计 DSL，以确保软件系统描述与实现的一致性。通过显式化的软件架构设计，用于支持 AI 代码生成系统的嵌入。
-- Feakin Intellij Plugin 是 Feakin 的一个 IntelliJ 插件，用于将 Feakin/Fklang 集成到项目中。
+- Intellij Plugin 是 Feakin 的一个 IntelliJ 插件，用于将 Feakin/Fklang 集成到项目中。
+- （Todo） Vscode Plugin 是 Feakin 的一个 Vscode 插件，用于将 Feakin/Fklang 集成到项目中。
 - Feakin Web 提供了一个架构设计与可视化协作工具，让架构师能够更加高效地进行架构设计与可视化协作。
 
 设计理念：
