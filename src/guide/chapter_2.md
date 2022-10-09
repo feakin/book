@@ -4,6 +4,11 @@
 
 ```feakin
 impl TicketReservated {
-
+  endpoint {
+    POST "/ticket/reservate";
+    request: TicketReservatedRequest;
+    response: TicketReservatedResponse;
+  }
 }
 ```
+
