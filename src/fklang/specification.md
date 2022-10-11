@@ -57,25 +57,20 @@ Aggregate Cart {
   """
   DomainEvent CartCreated, CartItemAdded, CartItemRemoved, CartItemQuantityChanged, CartCheckedOut;
   DomainEvent CartItemQuantityChanged;
-  
-  // Concept or UML like ?
-  // can be inside or outside of the Aggregate
-  Entity Cart {
-    // it's to many, can change in different way.
-    ValueObject CartId
-    ValueObject CartStatus
-    ValueObject CartItem
-    ValueObject CartItemQuantity
-    ValueObject CartItemPrice
-    ValueObject CartItemTotal
-    ValueObject CartTotal
-  }
+
+  Entity Cart;
 }
 
-// global detail for Cart.
-Entity Cart {}
-
-DomainLanguage(sourceSet = TicketLang)
+Entity Cart {
+  // it's to many, can change in different way.
+  ValueObject CartId
+  ValueObject CartStatus
+  ValueObject CartItem
+  ValueObject CartItemQuantity
+  ValueObject CartItemPrice
+  ValueObject CartItemTotal
+  ValueObject CartTotal
+}
 ```
 
 ## DomainEvent Implementation
@@ -97,26 +92,21 @@ compare to `given-when-then`.
 impl CinemaCreated {
   endpoint {
     POST "${uri}/post";
-    authorization: Basic {{username}} {{password}};
-    request {
-      "id": {{$uuid}},
-      "price": {{$randomInt}},
-      "ts": {{$timestamp}},
-      "value": "content"
-    }
+    request: Request;
+    authorization: Basic "{{username}}" "{{password}}";
   }
   
   // created in ApplicationService
   flow {
-    via UserRepository::getUserById receive user: User
+    via UserRepository::getUserById() receive user: User
     // send "book.created" to Kafka
-    via UserRepository::save with parameter() ??
+    via UserRepository::saveUser(user: User)
     // or
     via UserRepository::save(user: User) receive user: User;
     // message queue
     via MessageQueue send CinemaCreated to "CinemaCreated"
     // http request
-    via HTTP::post (with parameter())? to "${uri}/post"
+    via HTTP::post() to "${uri}/post"
     // grpc Greeter
     via GRPC::Greeter send CinemaCreated to "CinemaCreated"
     // map filter
@@ -152,9 +142,9 @@ with API testing
 impl CinemaCreated {
   endpoint {
     GET "/book/{id}";
+    request: CreateBookRequest;
     authorization: Basic admin admin;
     response: Cinema;
-    request: CreateBookRequest;
 
     // testForLocal
     env "Local" {
