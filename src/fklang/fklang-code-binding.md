@@ -7,16 +7,20 @@ Whole process:
 3. generate the binding code, and insert it into the target file.
 4. format the target file?
 
-Source code scanner: TreeSitter
+mods:
+
+- code_meta. metadata of the code, such as the package name, the class name, the function name, etc.
+- construct. parse source code to code_meta with TreeSitter.
+- inserter. insert code to source code.
+- exec. execute the binding process.
 
 ## TreeSitter
 
 Online playground: [https://tree-sitter.github.io/tree-sitter/playground](https://tree-sitter.github.io/tree-sitter/playground)
 
-TreeSitter is support [Pattern Matching with Queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries) 
-can use  [S-expression](https://en.wikipedia.org/wiki/S-expression) to query the AST.
+TreeSitter is support [Pattern Matching with Queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries) can use  [S-expression](https://en.wikipedia.org/wiki/S-expression) to query the AST.
 
-### Examples
+### Query examples
 
 Java Code:
 
