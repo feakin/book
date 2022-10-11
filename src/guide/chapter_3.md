@@ -54,13 +54,6 @@ impl HelloGot {
 }
 
 layered DDD {
-    dependency {
-        "interface" -> "application"
-        "interface" -> "domain"
-        "domain" -> "application"
-        "application" -> "infrastructure"
-        "interface" -> "infrastructure"
-    }
     layer interface {
         package: "com.feakin.demo.rest";
     }

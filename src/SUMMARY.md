@@ -11,6 +11,7 @@
 - [Chapter 1 - DDD in Feakin](./guide/chapter_1.md)
 - [Chapter 2 - Binding Implementation](./guide/chapter_2.md)
 - [Chapter 3 - Code generator](./guide/chapter_3.md)
+- [Chapter 3 - Architecture Guarding](./guide/chapter_4.md)
 
 # Reference Guide
 
