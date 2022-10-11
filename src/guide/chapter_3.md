@@ -1,19 +1,87 @@
-# Fklang Code Generator
+# Code Generator
 
-## 代码生成
+> code generator for fklang
+
+Download from: [https://github.com/feakin/fklang/releases](https://github.com/feakin/fklang/releases)
 
 ```bash
 fkl gen --help
+
+Generate code from a fkl file, current support Java
+
+Usage: fkl gen [OPTIONS]
+
+Options:
+      --path <PATH>
+      --impl <String>
+  -h, --help           Print help information
+  -V, --version        Print version information
 ```
 
-示例
+## Basic: generate method
 
-```bash
-fkl gen --impl CinemaCreated --path simple.fkl
+sample code:
+
+```feakin
+impl HelloGot {
+    endpoint {
+        GET "/hello";
+        response: String;
+    }
+}
 ```
 
-结果：
+output:
 
+```java
+@GetMapping("/hello")
+public String gotHello() {
+
+}
 ```
 
+## Auto insert: Aggregate and Layered
+
+declaration with aggregate and layered:
+
+```feakin
+impl HelloGot {
+    aggregate: Hello; // here
+    endpoint {
+        GET "/hello";
+        response: String;
+    }
+}
+
+layered DDD {
+    dependency {
+        "interface" -> "application"
+        "interface" -> "domain"
+        "domain" -> "application"
+        "application" -> "infrastructure"
+        "interface" -> "infrastructure"
+    }
+    layer interface {
+        package: "com.feakin.demo.rest";
+    }
+    layer domain {
+        package: "com.feakin.demo.domain";
+    }
+    layer application {
+        package: "com.feakin.demo.application";
+    }
+    layer infrastructure {
+        package: "com.feakin.demo.infrastructure";
+    }
+}
 ```
+
+with insert code to: `src/main/java/com/feakin/demo/rest/Controller.java`
+
+```java
+@GetMapping("/hello")
+public String gotHello() {
+
+}
+```
+
