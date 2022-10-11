@@ -10,6 +10,80 @@ Main Resources:
 
 Grammar Kit: [https://github.com/JetBrains/Grammar-Kit](https://github.com/JetBrains/Grammar-Kit)
 
+## Define by `plugin.xml`
+
+```xml
+<extensions defaultExtensionNs="com.intellij">
+    <!-- File-type Factory -->
+    <fileType name="Feakin File"
+              language="Feakin"
+              implementationClass="com.feakin.intellij.FkFileType"
+              fieldName="INSTANCE"
+              extensions="fkl"/>
+    <internalFileTemplate name="Feakin File"/>
+
+    <!-- Parser -->
+    <lang.parserDefinition language="Feakin"
+                           implementationClass="com.feakin.intellij.parser.FkParserDefinition"/>
+
+    <lang.syntaxHighlighter language="Feakin"
+                            implementationClass="com.feakin.intellij.highlight.FkSyntaxHighlighter"/>
+
+    <lang.psiStructureViewFactory language="Feakin"
+                                  implementationClass="com.feakin.intellij.structure.FkStructureViewFactory"/>
+
+    <!-- Editor -->
+    <extendWordSelectionHandler implementation="com.feakin.intellij.ide.editor.FkBlockSelectionHandler"/>
+    <lang.foldingBuilder language="Feakin"
+                         implementationClass="com.feakin.intellij.edit.FkFoldingBuilder"/>
+
+    <lang.commenter language="Feakin" implementationClass="com.feakin.intellij.completion.FkCommenter"/>
+    <lang.braceMatcher language="Feakin" implementationClass="com.feakin.intellij.ide.FkBraceMatcher"/>
+
+
+    <!-- Navigate between useDomainObject and DomainObjectDecl -->
+    <indexedRootsProvider implementation="com.feakin.intellij.indexing.FkIndexableSetContributor"/>
+
+    <stubElementTypeHolder class="com.feakin.intellij.lexer.FkElementTypes"/>
+
+    <stubIndex implementation="com.feakin.intellij.resolve.indexes.FkNamedElementIndex"/>
+    <stubIndex implementation="com.feakin.intellij.resolve.indexes.FkGotoClassIndex"/>
+
+    <gotoSymbolContributor implementation="com.feakin.intellij.ide.navigate.FkGotoSymbolContributor"/>
+
+    <!-- Completion -->
+    <completion.contributor language="Feakin"
+                            implementationClass="com.feakin.intellij.completion.FkKeywordCompletionContributor"
+                            id="FkKeywordCompletionContributor"
+                            order="first"/>
+
+
+    <!-- Line Marker Providers -->
+    <codeInsight.lineMarkerProvider language="Feakin"
+                                    implementationClass="com.feakin.intellij.linemarkers.FkImplMessageProvider"/>
+    <codeInsight.lineMarkerProvider language="Feakin"
+                                    implementationClass="com.feakin.intellij.linemarkers.FkImplMethodProvider"/>
+
+    <runLineMarkerContributor language="Feakin"
+                              implementationClass="com.feakin.intellij.linemarkers.FkImplLineMarkerContributor"/>
+
+    <!-- Run Configurations -->
+    <configurationType implementation="com.feakin.intellij.runconfig.FkCommandConfigurationType"/>
+
+    <programRunner implementation="com.feakin.intellij.runconfig.FkCommandRunner"/>
+
+    <runConfigurationProducer
+            implementation="com.feakin.intellij.runconfig.command.FkRunConfigurationProducer"/>
+
+    <!-- Formatter -->
+    <lang.formatter language="Feakin" implementationClass="com.feakin.intellij.formatter.FkFormattingModelBuilder"/>
+
+    <!-- Usages Provider -->
+    <lang.findUsagesProvider language="Feakin" implementationClass="com.feakin.intellij.ide.search.FkFindUsagesProvider"/>
+    <findUsagesHandlerFactory implementation="com.feakin.intellij.ide.search.FkFindUsagesHandlerFactory"/>
+    <usageTypeProvider implementation="com.feakin.intellij.ide.search.FkUsageTypeProvider"/>
+</extensions>
+```
 
 ## Indexes with Stub
 
