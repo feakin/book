@@ -45,7 +45,7 @@ DDD Syntax:
 
 ### Sample
 
-```kotlin
+```feakin
 ContextMap Ticket {}
 
 Context ShoppingCarContext {}
@@ -55,7 +55,6 @@ Aggregate Cart {
   """ inline doc sample
   just-demo for test
   """
-  display = "Cart";
   DomainEvent CartCreated, CartItemAdded, CartItemRemoved, CartItemQuantityChanged, CartCheckedOut;
   DomainEvent CartItemQuantityChanged;
   
@@ -94,7 +93,7 @@ Subscribe / Publish / Event / Flow
 
 compare to `given-when-then`.
 
-```kotlin
+```feakin
 impl CinemaCreated {
   endpoint {
     POST "${uri}/post";
@@ -149,10 +148,8 @@ public User getUserByUserId(String userId) {
 
 with API testing
 
-```kotlin
+```feakin
 impl CinemaCreated {
-  qualified: "${moduleName}:com.example.book", 
-  
   endpoint {
     GET "/book/{id}";
     authorization: Basic admin admin;
@@ -218,10 +215,10 @@ impl CinemaCreated {
 
 ### Default impl config (TBD)
 
-```kotlin
+```feakin
 config impl {
   techstack {
-    language = "Kotlin"
+    language = "feakin"
     framework = "Spring"
     message = "Kafka" 
     dao = "JPA"
@@ -235,10 +232,9 @@ config impl {
 
 > Binding provide a way to binding source code to Context
 
-```
+```feakin
 Aggregate Ticket {
-  DomainEvent: TicketCreated, TicketUpdated, TicketDeleted; 
-
+  DomainEvent: TicketCreated, TicketUpdated, TicketDeleted;
   binding TicketBinding;
 }
 
@@ -272,8 +268,8 @@ If no config, will use default config by scanner?
 
 file_type: uml, puml
 
-```
-sourceSet Extension {
+```feakin
+SourceSet Extension {
   feakin {
     srcDir = ["src/main/resources/uml"]
   }
@@ -295,7 +291,7 @@ refs:
 - xpath
   syntax: [https://github.com/antlr/grammars-v4/blob/master/xpath/xpath31/XPath31.g4](https://github.com/antlr/grammars-v4/blob/master/xpath/xpath31/XPath31.g4)
 
-```
+```feakin
 SourceSet PetSwagger {
   file: "openapi.yaml",
   type: OpenApi,
@@ -307,7 +303,7 @@ SourceSet PetSwagger {
 
 file_type: CSV, JSON, Markdown ?
 
-```
+```feakin
 SourceSet TicketLang {
   file: "ticket.csv",
   type: UniqueLanguage, // or also for UL
@@ -330,7 +326,7 @@ SourceSet TicketLang {
 
 can be guarding for model
 
-```kotlin
+```feakin
 layered DDD {
   dependency {
     "interface" -> "application"
@@ -371,7 +367,7 @@ Description Syntax:
 | behavior_expr    | :      | ['via'] [ ID ] action [ID]                                              |
 | action           | :      | [ 'get' &#124; 'update' &#124; 'delete' &#124; 'create' &#124;  'send'] |
 
-```kotlin
+```feakin
 description FakeCode {
   if (and ?) then {} else {}
   choose() {
@@ -405,7 +401,7 @@ description FakeCode {
 
 ### Variable
 
-```
+```feakin
 def JavaSource: extra {
   language: "Java";
   package: "com.phodal.coco";
@@ -414,7 +410,7 @@ def JavaSource: extra {
 
 ### Container
 
-```groovy
+```feakin
 typedef(container) ContextMap {
  
 }
@@ -428,9 +424,8 @@ typedef(container) ContextMap {
 
 ## Style Decl (TBD)
 
-```kotlin
+```feakin
 styles {
-
     // node
     element "Software System" {
         background #1168bd

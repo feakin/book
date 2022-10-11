@@ -58,7 +58,7 @@ impl CinemaUpdated {
 
 下载地址：[https://github.com/feakin/fklang/releases](https://github.com/feakin/fklang/releases)
 
-```shell
+```bash
 Usage: fkl <COMMAND>
 
 Commands:
@@ -73,9 +73,11 @@ Options:
 
 CLI 示例：
 
-```shell
+```bash
 fkl gen --path /Users/phodal/IdeaProjects/untitled/simple.fkl --impl CinemaCreated
+```
 
+```java
 @GetMapping("/book/{id}")
 public Cinema creatCinema() { }
 ```
