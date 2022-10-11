@@ -11,3 +11,4 @@ git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/feakin/book/edit/master/{path}"
 site-url = "/"
 cname = "book.feakin.com"
+additional-js = ["assets/custom.js"]
