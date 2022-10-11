@@ -111,18 +111,28 @@ let fkl_lang = function (hljs) {
             3: "title.class",
         }
     };
+    const METHOD_CALL_DECL = {
+        match: [
+            IDENT_RE,
+            /::/,
+            IDENT_RE,
+        ],
+        scope: {
+            1: "title.class",
+            3: "title.method",
+        }
+    }
 
     return {
         name: 'Feakin',
         contains: [
             COMMENT,
             CLASS_DEFINITION,
+            STRING,
+            METHOD_CALL_DECL
         ],
         aliases: ["fkl"],
         keywords: {
-            "variable.language": 'this super',
-            literal: 'true false null',
-            type: TYPES,
             keyword: KEYWORDS
         },
         illegal: /#|<\//
@@ -131,5 +141,6 @@ let fkl_lang = function (hljs) {
 
 var langs = hljs.listLanguages();
 if (!langs.includes("feakin")) {
-    hljs.registerLanguage("feakin", fkl_lang);
+    hljs.registerLanguage("feakin", function () { return fkl_lang(hljs); });
+    hljs.highlightAll();
 }
