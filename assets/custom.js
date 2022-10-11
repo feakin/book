@@ -139,8 +139,12 @@ let fkl_lang = function (hljs) {
     };
 };
 
-var langs = hljs.listLanguages();
-if (!langs.includes("feakin")) {
-    hljs.registerLanguage("feakin", function () { return fkl_lang(hljs); });
-    hljs.highlightAll();
-}
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+        var langs = hljs.listLanguages();
+        if (!langs.includes("feakin")) {
+            hljs.registerLanguage("feakin", function () { return fkl_lang(hljs); });
+            hljs.highlightAll();
+        }
+    });
+});
