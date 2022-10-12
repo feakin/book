@@ -181,17 +181,15 @@ impl CinemaCreated {
     authorization: Basic admin admin;
     response: Cinema;
 
-    // testForLocal
-    env "Local" {
-       host: ""
-       token: ""
-
+    verify {
+       env: Local
        expect {
         "status": 200
         "data": {
-          "id": {{$uuid}},
-          "price": {{$randomInt}},
-          "ts": {{$timestamp}},
+          // build in APIs ?
+          "id": {{$uuid}};
+          "price": {{$randomInt}};
+          "ts": {{$timestamp}};
           "value": "content"
         }
     }
@@ -234,6 +232,11 @@ impl CinemaCreated {
   // with source side (TBD)
   output CreateBookResponse(xpath="");
   input CreateBookResponse(sourceSet="PetSwagger" location="");
+}
+
+
+env Local {
+  host: "http://localhost:8080";
 }
 ```
 
