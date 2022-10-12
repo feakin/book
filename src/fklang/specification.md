@@ -19,6 +19,34 @@ TBD:
 - Typedef (TBD). for DDD syntax type bootstrapping.
 - Style (TBD). for design visualization UI.
 
+## Basic Syntax
+
+### assign
+
+```
+attr_type: attr_value;
+```
+
+example:
+
+```
+request: CinemaUpdatedRequest;
+```
+
+## declare
+
+```
+Keyword IDENTIFIER (COMMA  IDENTIFIER)*;
+```
+
+example
+
+```
+Aggregate Ticket {
+  Entity Ticket, Seat;
+}
+```
+
 ## DDD
 
 DDD Syntax:
@@ -100,13 +128,13 @@ impl CinemaCreated {
   flow {
     via UserRepository::getUserById() receive user: User
     // send "book.created" to Kafka
-    via UserRepository::saveUser(user: User)
+    via UserRepository::saveUser(user: User) receive void
     // or
     via UserRepository::save(user: User) receive user: User;
     // message queue
     via MessageQueue send CinemaCreated to "CinemaCreated"
     // http request
-    via HTTP::post() to "${uri}/post"
+    via HTTP::post() send Message to "${uri}/post"
     // grpc Greeter
     via GRPC::Greeter send CinemaCreated to "CinemaCreated"
     // map filter
@@ -208,12 +236,12 @@ impl CinemaCreated {
 ```feakin
 config impl {
   techstack {
-    language = "feakin"
-    framework = "Spring"
-    message = "Kafka" 
-    dao = "JPA"
-    cache = "Redis"
-    search = "ElasticSearch"
+    language: "feakin"
+    framework: "Spring"
+    message: "Kafka" 
+    dao: "JPA"
+    cache: "Redis"
+    search: "ElasticSearch"
   }
 }
 ```
@@ -224,14 +252,14 @@ config impl {
 
 ```feakin
 Aggregate Ticket {
-  DomainEvent: TicketCreated, TicketUpdated, TicketDeleted;
-  binding TicketBinding;
+  DomainEvent TicketCreated, TicketUpdated, TicketDeleted;
 }
 
 // or to service ?
-binding TicketBinding {
-  DomainEvent: TicketCreated, TicketUpdated, TicketDeleted; 
+impl TicketBinding {
+  aggregate: Ticket; 
   
+  // todo
   extra {
     baseUrl: "/ticket";
     language: "Java";
