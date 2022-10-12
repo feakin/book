@@ -303,13 +303,13 @@ If no config, will use default config by scanner?
 file_type: uml, puml
 
 ```feakin
-SourceSet Extension {
+SourceSet sourceSet {
   feakin {
-    srcDir = ["src/main/resources/uml"]
+    srcDir: ["src/main/resources/uml"]
   }
   puml {
-    parser = "PlantUML"
-    srcDir = ["src/main/resources/uml"]
+    parser: "PlantUML"
+    srcDir: ["src/main/resources/uml"]
   }
 }
 ```
@@ -322,14 +322,16 @@ with: XPath
 
 refs:
 
-- xpath
-  syntax: [https://github.com/antlr/grammars-v4/blob/master/xpath/xpath31/XPath31.g4](https://github.com/antlr/grammars-v4/blob/master/xpath/xpath31/XPath31.g4)
+- xpath syntax: [https://github.com/antlr/grammars-v4/blob/master/xpath/xpath31/XPath31.g4](https://github.com/antlr/grammars-v4/blob/master/xpath/xpath31/XPath31.g4)
 
+//
 ```feakin
-SourceSet PetSwagger {
-  file: "openapi.yaml",
-  type: OpenApi,
-  prefix: "Pet"  // add prefix to items
+SourceSet petSwagger {
+  swagger {
+    parser: "Swagger"
+    srcDir: ["src/main/resources/swagger"]
+    xpath: "/definitions/Pet"
+  }
 }
 
 // with XPath
