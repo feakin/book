@@ -57,6 +57,7 @@ let fkl_lang = function (hljs) {
         'DomainEvent',
         'Struct',
         'DomainLanguage',
+        'SourceSet',
 
         'impl',
         'endpoint',

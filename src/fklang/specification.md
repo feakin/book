@@ -440,7 +440,7 @@ description FakeCode {
 ### Variable
 
 ```feakin
-def JavaSource: extra {
+extra JavaSource {
   language: "Java";
   package: "com.phodal.coco";
 }
@@ -449,7 +449,7 @@ def JavaSource: extra {
 ### Container
 
 ```feakin
-typedef(container) ContextMap {
+container ContextMap {
  
 }
 ```
@@ -459,35 +459,3 @@ typedef(container) ContextMap {
 | typedef_decl | :   | [ 'typedef'] '(' metaType ')' ID '{' (decl_list) '}'; |
 | decl_list    | :   | decl_item*                                            |
 | decl_item    | :   | [ID] ':' decl_name                                    |
-
-## Style Decl (TBD)
-
-```feakin
-styles {
-    // node
-    element "Software System" {
-        background #1168bd
-        color #ffffff
-    }
-    element "Person" {
-        shape person
-        background #08427b
-        color #ffffff
-    }
-    
-    // edge
-    relationship <tag> {
-        thickness <integer>
-        color #777777
-        colour #777777
-        dashed <true|false>
-        style <solid|dashed|dotted>
-        routing <Direct|Orthogonal|Curved>
-        fontSize <integer>
-        width <integer>
-        position <integer: 0-100>
-        opacity <integer: 0-100>
-    }
-
-}
-```
