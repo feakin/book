@@ -182,7 +182,7 @@ impl CinemaCreated {
     response: Cinema;
 
     verify {
-       env: Local
+       env: Local;
        expect {
         "status": 200
         "data": {
@@ -197,12 +197,13 @@ impl CinemaCreated {
 
   // full processing (TBD)
   request CreateBookRequest {
-    struct {
-      "title" : "string",
-      "author" : "string",
-      "price" : "number"
-    }
-    example {
+//    schema => data,
+//    schema {
+//      "title" : "string",
+//      "author" : "string",
+//      "price" : "number"
+//    }
+    data {
       "title" : "The Lord of the Rings",
       "author" : "J.R.R. Tolkien",
       "price" : 29.99
@@ -268,14 +269,19 @@ Aggregate Ticket {
 // or to service ?
 impl TicketBinding {
   aggregate: Ticket; 
-  
-  // todo
-  extra {
-    baseUrl: "/ticket";
-    language: "Java";
-    package: "com.phodal.coco";
+  endpoint {
+    GET "/ticket/{id}";
+    request: GetTicketRequest;
+    authorization: Basic admin admin;
+    response: Ticket;
   }
 }
+
+//define config: ExtraConfig {
+//  baseUrl: "/ticket";
+//  language: "Java";
+//  package: "com.phodal.coco";
+//}
 ```
 
 If no config, will use default config by scanner?
@@ -325,6 +331,8 @@ SourceSet PetSwagger {
   type: OpenApi,
   prefix: "Pet"  // add prefix to items
 }
+
+// with XPath
 ```
 
 ### UniqueLanguage model ? (TBD)
