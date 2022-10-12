@@ -8,7 +8,6 @@
 
 TBD：需要优先支持 Swagger 之类的？
 
-
 ```feakin
 impl CinemaCreated {
   endpoint {
@@ -18,3 +17,7 @@ impl CinemaCreated {
   }
 }
 ```
+## 校验机制
+
+
+

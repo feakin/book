@@ -1,5 +1,7 @@
 # Architecture Guarding
 
+## 分层架构守护
+
 ```feakin
 layered DDD {
     dependency {
@@ -22,4 +24,15 @@ layered DDD {
         package: "com.feakin.demo.infrastructure";
     }
 }
+```
+
+## 更多守护规则（TBD）
+
+refs: [Guarding](https://github.com/modernizing/guarding)
+
+```guarding
+class(implementation "BaseParser")::name should endsWith "Parser";
+
+class("java.util.Map") only accessed(["com.phodal.pepper.refactor.staticclass"]);
+class(implementation "BaseParser")::name should not contains "Lexer";
 ```
