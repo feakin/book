@@ -10,11 +10,12 @@ Basic Works:
 In dev:
 
 - Binding. mapping DSL to SourceCode
+- Layered syntax. layered structured syntax.
 - SourceSet Plugin. third-part integration, like PlantUml, Swagger.
 
 TBD:
 
-- Layered syntax. layered structured syntax.
+- Builtin Types. like Context, Container, or else.
 - Description syntax. description design in fake code.
 - Typedef (TBD). for DDD syntax type bootstrapping.
 - Style (TBD). for design visualization UI.
@@ -468,3 +469,8 @@ def ContextMap {
 | typedef_decl | :   | [ 'typedef'] '(' metaType ')' ID '{' (decl_list) '}'; |
 | decl_list    | :   | decl_item*                                            |
 | decl_item    | :   | [ID] ':' decl_name                                    |
+
+## Built-in Types
+
+TODO: move origin Container to builtin functions
+
