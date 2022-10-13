@@ -145,7 +145,7 @@ impl CinemaCreated {
     // grpc Greeter
     via GRPC::Greeter send CinemaCreated to "CinemaCreated"
     // map filter
-    choose(isUserValid) {
+    when(isUserValid) {
       is true => {
         // do something
       }
@@ -245,7 +245,7 @@ env Local {
 ### Default impl config (TBD)
 
 ```feakin
-config impl {
+var config: Config {
   techstack {
     language: "feakin"
     framework: "Spring"
@@ -343,9 +343,11 @@ file_type: CSV, JSON, Markdown ?
 
 ```feakin
 SourceSet TicketLang {
-  file: "ticket.csv",
-  type: UniqueLanguage, // or also for UL
-  prefix: "Ticket"
+  UniqueLanguage {
+    srcDir: "ticket.csv";
+    type: UniqueLanguage;
+    prefix: "Ticket";
+  }
 }
 ```
 
@@ -388,9 +390,9 @@ layered DDD {
 }
 ```
 
-## Description (TBD)
+## FakeCode (TBD)
 
-> Description can provide design in fake code way.
+> FakeCode can provide design in fake code way.
 
 Description Syntax:
 
@@ -401,16 +403,23 @@ Description Syntax:
 |                  | &#124; | choose_expr                                                             | 
 |                  | &#124; | behavior_expr                                                           | 
 | if_expr          | :      | [ 'if' ] '(' [ expression ]  ')'                                        |
-| choose_expr      | :      | [ 'choose' ] '(' [ expression ]  ')'                                    |
+| when_expr        | :      | [ 'when' ] '(' [ expression ]  ')'                                      |
 | behavior_expr    | :      | ['via'] [ ID ] action [ID]                                              |
 | action           | :      | [ 'get' &#124; 'update' &#124; 'delete' &#124; 'create' &#124;  'send'] |
 
 ```feakin
-description FakeCode {
-  if (and ?) then {} else {}
-  choose() {
-    condition:
-    condition:
+var sample: FakeCode {
+  // if (and ?) then {} else {}
+  when(condition) {
+    is condition1 {
+
+    }
+    is condition2 {
+
+    }
+    else {
+
+    }
   }
 
   done
@@ -440,7 +449,7 @@ description FakeCode {
 ### Variable
 
 ```feakin
-extra JavaSource {
+var source: JavaSource {
   language: "Java";
   package: "com.phodal.coco";
 }
@@ -449,8 +458,8 @@ extra JavaSource {
 ### Container
 
 ```feakin
-container ContextMap {
- 
+def ContextMap {
+    // todo: parser generator    
 }
 ```
 
