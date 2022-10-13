@@ -172,7 +172,12 @@ public User getUserByUserId(String userId) {
 }
 ```
 
-with API testing
+## with API testing (Todo)
+
+with Help utils function
+
+- mock server
+- verify server for testing contract
 
 ```feakin
 impl CinemaCreated {
@@ -182,6 +187,10 @@ impl CinemaCreated {
     authorization: Basic admin admin;
     response: Cinema;
 
+    // a mock server for testing
+    mock {
+       port: 8080;
+    };
     verify {
        env: Local;
        expect {
