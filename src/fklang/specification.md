@@ -445,6 +445,9 @@ var sample: FakeCode {
 
 ### BuildIn Types
 
+
+Basic Types
+
 | Name        | Description                     |
 |-------------|---------------------------------|
 | identifier  | unique identifier               |
@@ -455,6 +458,24 @@ var sample: FakeCode {
 | string      | string                          |
 | number      | Any number, can be float or int |
 | optional ?  | Optional type ?                 |
+
+Data Types ?
+
+| Name        | Description                     |
+|-------------|---------------------------------|
+| Table       | Table data                      |
+| List        | List data                       |
+| Map         | Map data                        |
+| Set         | Set data                        |
+| Tuple       | Tuple data                      |
+| Object      | Object data                     |
+| Array       | Array data                      |
+| Date        | Date data                       |
+| Time        | Time data                       |
+| DateTime    | DateTime data                   |
+| Duration    | Duration data                   |
+| Interval    | Interval data                   |
+
 
 ### Variable
 

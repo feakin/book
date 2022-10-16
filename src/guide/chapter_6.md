@@ -3,6 +3,6 @@
 ## 模块化设计
 
 ```feakin
-include "./layered"
+include "self/layered"
 ````
 
