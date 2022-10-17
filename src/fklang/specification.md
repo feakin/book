@@ -176,8 +176,8 @@ public User getUserByUserId(String userId) {
 
 with Help utils function
 
-- mock server
-- verify server for testing contract
+- builtin-functions: mock server
+- builtin-functions: verify server for testing contract
 
 ```feakin
 impl CinemaCreated {
@@ -256,14 +256,12 @@ env Local {
 
 ```feakin
 var config: Config {
-  techstack {
-    language: "feakin"
-    framework: "Spring"
-    message: "Kafka" 
-    dao: "JPA"
-    cache: "Redis"
-    search: "ElasticSearch"
-  }
+  language: "feakin"
+  framework: "Spring"
+  message: "Kafka" 
+  dao: "JPA"
+  cache: "Redis"
+  search: "ElasticSearch"
 }
 ```
 
