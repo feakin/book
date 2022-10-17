@@ -40,7 +40,7 @@ example:
 request: CinemaUpdatedRequest;
 ```
 
-## declare
+### declare
 
 ```
 Keyword IDENTIFIER (COMMA  IDENTIFIER)*;
@@ -168,99 +168,6 @@ public User getUserByUserId(String userId) {
 // get_user_by_user_id from MyBatis
 public User getUserByUserId(String userId) {
   return userMapper.getUserByUserId(userId);
-}
-```
-
-## with API testing (Todo)
-
-with Help utils function
-
-- builtin-functions: mock server
-- builtin-functions: verify server for testing contract
-
-```feakin
-impl CinemaCreated {
-  endpoint {
-    GET "/book/{id}";
-    request: CreateBookRequest;
-    authorization: Basic admin admin;
-    response: Cinema;
-
-    // a mock server for testing
-    mock {
-       port: 8080;
-    };
-    verify {
-       env: Local;
-       expect {
-        "status": 200
-        "data": {
-          // build in APIs ?
-          "id": {{$uuid}};
-          "price": {{$randomInt}};
-          "ts": {{$timestamp}};
-          "value": "content"
-        }
-    }
-  }
-
-  // full processing (TBD)
-  request CreateBookRequest {
-//    schema => data,
-//    schema {
-//      "title" : "string",
-//      "author" : "string",
-//      "price" : "number"
-//    }
-    data {
-      "title" : "The Lord of the Rings",
-      "author" : "J.R.R. Tolkien",
-      "price" : 29.99
-    }
-    validate {
-      // title.length > 10 ? 
-      title  {
-        required { min: 3, max: 10 }
-        pattern { regex: "^[a-zA-Z0-9]+$" }
-        range { min: 1, max: 100 }
-      }
-    } 
-  } 
-  
-  middle {
-    via User get/update/delete/post userId 
-    via Kafka send "book.created"
-  }
-
-  response CreateBookResponse {
-     struct {
-        "id" : "number"
-     }
-     validate  { }
-  } 
-  
-  // with source side (TBD)
-  output CreateBookResponse(xpath="");
-  input CreateBookResponse(sourceSet="PetSwagger" location="");
-}
-
-
-env Local {
-  host: "http://localhost:8080";
-}
-```
-
-
-### Default impl config (TBD)
-
-```feakin
-var config: Config {
-  language: "feakin"
-  framework: "Spring"
-  message: "Kafka" 
-  dao: "JPA"
-  cache: "Redis"
-  search: "ElasticSearch"
 }
 ```
 
@@ -394,6 +301,99 @@ layered DDD {
   layer infrastructure {
     package: "com.example.infrastructure"
   }
+}
+```
+
+## with API testing (Todo)
+
+with Help utils function
+
+- builtin-functions: mock server
+- builtin-functions: verify server for testing contract
+
+```feakin
+impl CinemaCreated {
+  endpoint {
+    GET "/book/{id}";
+    request: CreateBookRequest;
+    authorization: Basic admin admin;
+    response: Cinema;
+
+    // a mock server for testing
+    mock {
+       port: 8080;
+    };
+    verify {
+       env: Local;
+       expect {
+        "status": 200
+        "data": {
+          // build in APIs ?
+          "id": {{$uuid}};
+          "price": {{$randomInt}};
+          "ts": {{$timestamp}};
+          "value": "content"
+        }
+    }
+  }
+
+  // full processing (TBD)
+  request CreateBookRequest {
+//    schema => data,
+//    schema {
+//      "title" : "string",
+//      "author" : "string",
+//      "price" : "number"
+//    }
+    data {
+      "title" : "The Lord of the Rings",
+      "author" : "J.R.R. Tolkien",
+      "price" : 29.99
+    }
+    validate {
+      // title.length > 10 ? 
+      title  {
+        required { min: 3, max: 10 }
+        pattern { regex: "^[a-zA-Z0-9]+$" }
+        range { min: 1, max: 100 }
+      }
+    } 
+  } 
+  
+  middle {
+    via User get/update/delete/post userId 
+    via Kafka send "book.created"
+  }
+
+  response CreateBookResponse {
+     struct {
+        "id" : "number"
+     }
+     validate  { }
+  } 
+  
+  // with source side (TBD)
+  output CreateBookResponse(xpath="");
+  input CreateBookResponse(sourceSet="PetSwagger" location="");
+}
+
+
+env Local {
+  host: "http://localhost:8080";
+}
+```
+
+
+### Default impl config (TBD)
+
+```feakin
+var config: Config {
+  language: "feakin"
+  framework: "Spring"
+  message: "Kafka" 
+  dao: "JPA"
+  cache: "Redis"
+  search: "ElasticSearch"
 }
 ```
 
