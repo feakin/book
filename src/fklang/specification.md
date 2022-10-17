@@ -13,12 +13,11 @@ In dev:
 - Layered syntax. layered structured syntax.
 - SourceSet Plugin. third-part integration, like PlantUml, Swagger.
 
-TBD:
+Bootstrapping:
 
 - Builtin Types. like Context, Container, or else.
 - Description syntax. description design in fake code.
 - Typedef (TBD). for DDD syntax type bootstrapping.
-- Style (TBD). for design visualization UI.
 
 ## Basic Syntax
 
@@ -398,9 +397,68 @@ layered DDD {
 }
 ```
 
-## FakeCode (TBD)
+## Bootstrapping
 
-> FakeCode can provide design in fake code way.
+Typedef (TBD)
+
+> Typedef provide custom syntax like container or others, can support for bootstrapping DDD syntax.
+
+### BuildIn Types
+
+Basic Types
+
+| Name        | Description                     |
+|-------------|---------------------------------|
+| identifier  | unique identifier               |
+| binary      | Any binary data                 |
+| bits        | A set of bits or flags          |
+| boolean     | "true" or "false"               |
+| enumeration | Enumerated strings              |
+| string      | string                          |
+| number      | Any number, can be float or int |
+| optional ?  | Optional type ?                 |
+
+Data Types ?
+
+| Name        | Description                     |
+|-------------|---------------------------------|
+| Table       | Table data                      |
+| List        | List data                       |
+| Map         | Map data                        |
+| Set         | Set data                        |
+| Tuple       | Tuple data                      |
+| Object      | Object data                     |
+| Array       | Array data                      |
+| Date        | Date data                       |
+| Time        | Time data                       |
+| DateTime    | DateTime data                   |
+| Duration    | Duration data                   |
+| Interval    | Interval data                   |
+
+### Variable
+
+```feakin
+var source: JavaSource {
+  language: "Java";
+  package: "com.phodal.coco";
+}
+```
+
+#### Container
+
+```feakin
+def ContextMap {
+    // todo: parser generator    
+}
+```
+
+| decl         |     | usage                                                 |
+|--------------|-----|-------------------------------------------------------|
+| typedef_decl | :   | [ 'typedef'] '(' metaType ')' ID '{' (decl_list) '}'; |
+| decl_list    | :   | decl_item*                                            |
+| decl_item    | :   | [ID] ':' decl_name                                    |
+
+### Expression
 
 Description Syntax:
 
@@ -437,67 +495,7 @@ var sample: FakeCode {
 }
 ```
 
-## Typedef (TBD)
-
-> Typedef provide custom syntax like container or others, can support for bootstrapping DDD syntax.
-
-### BuildIn Types
-
-Basic Types
-
-| Name        | Description                     |
-|-------------|---------------------------------|
-| identifier  | unique identifier               |
-| binary      | Any binary data                 |
-| bits        | A set of bits or flags          |
-| boolean     | "true" or "false"               |
-| enumeration | Enumerated strings              |
-| string      | string                          |
-| number      | Any number, can be float or int |
-| optional ?  | Optional type ?                 |
-
-Data Types ?
-
-| Name        | Description                     |
-|-------------|---------------------------------|
-| Table       | Table data                      |
-| List        | List data                       |
-| Map         | Map data                        |
-| Set         | Set data                        |
-| Tuple       | Tuple data                      |
-| Object      | Object data                     |
-| Array       | Array data                      |
-| Date        | Date data                       |
-| Time        | Time data                       |
-| DateTime    | DateTime data                   |
-| Duration    | Duration data                   |
-| Interval    | Interval data                   |
-
-
-### Variable
-
-```feakin
-var source: JavaSource {
-  language: "Java";
-  package: "com.phodal.coco";
-}
-```
-
-### Container
-
-```feakin
-def ContextMap {
-    // todo: parser generator    
-}
-```
-
-| decl         |     | usage                                                 |
-|--------------|-----|-------------------------------------------------------|
-| typedef_decl | :   | [ 'typedef'] '(' metaType ')' ID '{' (decl_list) '}'; |
-| decl_list    | :   | decl_item*                                            |
-| decl_item    | :   | [ID] ':' decl_name                                    |
-
-## Function (Bootstrapping)
+### Function (Bootstrapping)
 
 - mock
 - verify
