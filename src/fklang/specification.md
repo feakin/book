@@ -443,7 +443,6 @@ var sample: FakeCode {
 
 ### BuildIn Types
 
-
 Basic Types
 
 | Name        | Description                     |
@@ -498,7 +497,27 @@ def ContextMap {
 | decl_list    | :   | decl_item*                                            |
 | decl_item    | :   | [ID] ':' decl_name                                    |
 
-## Built-in Types
+## Function (Bootstrapping)
 
-TODO: move origin Container to builtin functions
+- mock
+- verify
+- validate
+
+```kotlin
+mock {
+
+}
+
+func mock(container: MockContainer) {
+  // steps
+}
+
+fun verify(input: Input, output: Output) {
+  // steps
+}
+
+fun validate(input: Input, output: Output) {
+  // steps
+}
+```
 
