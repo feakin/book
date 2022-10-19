@@ -5,17 +5,20 @@
 Download from: [https://github.com/feakin/fklang/releases](https://github.com/feakin/fklang/releases)
 
 ```bash
-fkl gen --help
+Feakin is a architecture design and visual collaboration tool. This is the parser for Feakin.
 
-Generate code from a fkl file, current support Java
+Usage: fkl <COMMAND>
 
-Usage: fkl gen [OPTIONS]
+Commands:
+  dot   generate Graphviz/Dot from fkl file
+  ast   generate ast from fkl file
+  gen   generate code from fkl file
+  run   run function from fkl file
+  help  Print this message or the help of the given subcommand(s)
 
 Options:
-      --path <PATH>
-      --impl <String>
-  -h, --help           Print help information
-  -V, --version        Print version information
+  -h, --help     Print help information
+  -V, --version  Print version information
 ```
 
 ## Basic: generate method
