@@ -81,3 +81,29 @@ public String gotHello() {
 }
 ```
 
+
+
+## Test with Http Request
+
+
+```feakin
+impl GitHubOpened {
+    endpoint {
+        GET "https://book.feakin.com/";
+        response: String;
+    }
+}
+
+impl FeakinJson {
+    endpoint {
+        GET "https://raw.githubusercontent.com/feakin/vscode-feakin/master/package.json";
+        response: String;
+    }
+}
+```
+
+Run by Cli
+
+```
+$ fkl run --path ./test_data/cli/impl.fkl --impl GitHubOpened --func request
+```
