@@ -2,6 +2,8 @@
 
 ## Implementation DomainEvent
 
+创建 API 时，需要绑定领域事件到实现。
+
 ```feakin
 impl TicketReservated {
   endpoint {
@@ -13,6 +15,8 @@ impl TicketReservated {
 ```
 
 ## Layered Implementation
+
+分层依赖关系：
 
 ```feakin
 layered DDD {

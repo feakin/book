@@ -1,8 +1,8 @@
 # Quick Start
 
 1. 安装 Feakin Intellij 插件: [![Version](https://img.shields.io/jetbrains/plugin/v/20026-feakin.svg)](https://plugins.jetbrains.com/plugin/20026-feakin)
-2. 下载 FKL CLI（SDK）：[https://github.com/feakin/fklang/releases](https://github.com/feakin/fklang/releases)
-    - 重命名为 fkl（Windows 下为 fkl.exe），并将其放置到 PATH 中
+2. 下载 FKL Cli（SDK）：[https://github.com/feakin/fklang/releases](https://github.com/feakin/fklang/releases)
+    - 重命名为 fkl（macOS 下为 fkl-macos, Windows 下为 fkl-windows.exe, ...），并将其放置到 PATH 中
     - 添加可执行权限：`chmod +x fkl`
       - 遇到 "cannot be opened because the developer cannot be verified."，参考 [https://support.apple.com/zh-cn/HT202491](https://support.apple.com/zh-cn/HT202491)
     - 检查 CLI 是否安装成功：`fkl --help`
