@@ -114,5 +114,28 @@ contextMapDeclaration ::= CONTEXT_MAP_KEYWORD IDENTIFIER contextMapBody
 - 通过 `stubIndex` 与 BNF 中的 `stubClass` 配置 Stub。
 - 通过 `CachedValuesManager.getCachedValue` 配置。
 
+## Custom LineMarker
+
+```xml
+<!-- line marker -->
+<runLineMarkerContributor language="Feakin" implementationClass="com.feakin.intellij.linemarkers.FkEndpointRequestLineMarkerContributor"/>
+
+<!--  producer -->
+<runConfigurationProducer implementation="com.feakin.intellij.runconfig.command.FkEndpointConfigurationProducer"/>
+```
+
+## FkCommandLine
+
+与 `fkl_cli/src/main.rs` 中的 `Cli::Commands` 保持一致：
+
+```kotlin
+class FkCommandLine(
+    var path: String,
+    var impl: String,
+    private val subcommand: String,
+    private val funcName: String = "",
+)
+```
+
 ## LSP (todo)
 

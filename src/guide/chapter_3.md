@@ -104,6 +104,6 @@ impl FeakinJson {
 
 Run by Cli
 
-```
+```bash
 $ fkl run --path ./test_data/cli/impl.fkl --impl GitHubOpened --func request
 ```
