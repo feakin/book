@@ -81,8 +81,6 @@ public String gotHello() {
 }
 ```
 
-
-
 ## Test with Http Request
 
 

@@ -26,6 +26,13 @@ layered DDD {
 }
 ```
 
+Run by CLI:
+
+```bash
+$ fkl run --path ./test_data/cli/impl.fkl --func guarding
+```
+
+
 ## 更多守护规则（TBD）
 
 refs: [Guarding](https://github.com/modernizing/guarding)
