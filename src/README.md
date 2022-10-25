@@ -72,7 +72,7 @@ Options:
 CLI 示例：
 
 ```bash
-fkl gen --path /Users/phodal/IdeaProjects/untitled/simple.fkl --impl CinemaCreated
+fkl gen --main /Users/phodal/IdeaProjects/untitled/simple.fkl --impl CinemaCreated
 ```
 
 ```java
