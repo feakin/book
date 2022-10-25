@@ -29,7 +29,7 @@ layered DDD {
 Run by CLI:
 
 ```bash
-$ fkl run --path ./test_data/cli/impl.fkl --func guarding
+$ fkl run --config ./test_data/cli/impl.fkl --func guarding
 ```
 
 

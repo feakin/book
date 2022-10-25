@@ -27,7 +27,7 @@ impl FeakinJson {
 Run by Cli
 
 ```
-$ fkl run --path ./test_data/cli/impl.fkl --impl GitHubOpened --func request
+$ fkl run --config ./test_data/cli/impl.fkl --impl GitHubOpened --func request
 ```
 
 ## 校验机制
