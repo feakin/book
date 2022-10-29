@@ -14,6 +14,7 @@
 - [Chapter 4 - Architecture guarding](./guide/chapter_4.md)
 - [Chapter 5 - HTTP API verify](./guide/chapter_5.md)
 - [Chapter 6 - Engineering](./guide/chapter_6.md)
+- [Chapter 7 - Environment](./guide/chapter_7.md)
 
 # Reference Guide
 

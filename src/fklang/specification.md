@@ -6,11 +6,12 @@ Basic Works:
 
 - DDD syntax. DDD strategy and tactic description.
 - DomainEvent Implementation. for generate implementation of DomainEvent.
+- Binding. mapping DSL to SourceCode
+- Layered syntax. layered structured syntax.
 
 In dev:
 
-- Binding. mapping DSL to SourceCode
-- Layered syntax. layered structured syntax.
+- Env for Database.
 - SourceSet Plugin. third-part integration, like PlantUml, Swagger.
 
 Bootstrapping:
@@ -265,7 +266,7 @@ SourceSet TicketLang {
 }
 ```
 
-## Layered (TBD)
+## Layered
 
 > Layered is design for decl
 
@@ -300,6 +301,24 @@ layered DDD {
   }
   layer infrastructure {
     package: "com.example.infrastructure"
+  }
+}
+```
+
+## Env
+
+For database and mock server
+
+```feakin
+env Local {
+  datasource {
+    driver: postgresql
+    host: "localhost"
+    port: 5432
+    database: "test"
+  }
+  server {
+    port: 9090;
   }
 }
 ```
