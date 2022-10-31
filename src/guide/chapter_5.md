@@ -1,4 +1,4 @@
-# Chapter 5 - HTTP API verify（TBD)
+# Chapter 5 - HTTP API verify (TBD)
  
 ## 契约驱动的 HTTP API （TBD)
 
