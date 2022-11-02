@@ -90,25 +90,19 @@ public Cinema creatCinema() { }
 
 ```feakin
 ContextMap TicketBooking {
-  Reservation -> Cinema;
-  Reservation -> Movie;
-  Reservation -> User;
+    Reservation -> Cinema;
+    Reservation -> Movie;
+    Reservation -> User;
 }
 
+// nested
 Context Reservation {
-  Aggregate Reservation;
+    Aggregate Reservation {
+        Entity Ticket, Reservation;
+    }
 }
 
-Aggregate Reservation {
-  Entity Ticket, Reservation;
-}
-
-Entity Reservation  {
-
-}
-
-Entity Ticket  {}
-
+// flatten
 Context Cinema {
   Aggregate Cinema;
 }
@@ -122,33 +116,19 @@ Entity ScreeningRoom { }
 Entity Seat { }
 
 Context Movie {
-  Aggregate Movie;
+    Aggregate Movie {
+        Entity Movie, Actor, Publisher;
+    }
 }
 
-Aggregate Movie {
-  Entity Movie, Actor, Publisher;
-}
-
-Entity Movie { }
-Entity Actor { }
-Entity Publisher { }
-
+// entity => aggregate root
 Context User {
-  Aggregate User;
+    Aggregate User {
+        Struct {
+            id: String;
+        }
+    }
 }
-
-Aggregate User {
-  Entity User;
-}
-
-Entity User {
-
-}
-
-Entity Payment {}
-
-ValueObject Price { }
-ValueObject Notifications { }
 ```
 
 
