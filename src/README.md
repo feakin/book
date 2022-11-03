@@ -124,7 +124,7 @@ Context Movie {
 // entity => aggregate root
 Context User {
     Aggregate User {
-        Struct {
+        struct {
             id: String;
         }
     }

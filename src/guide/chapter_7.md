@@ -2,6 +2,12 @@
 
 ## Env
 
+测试数据库连接
+
+```bash
+$ fkl run --main docs/samples/impl.fkl  --func test-connection --env Local
+```
+
 ```feakin
 env Local {
     datasource {
@@ -16,6 +22,7 @@ env Local {
 }
 
 env Staging {
+    // URL 模式
     datasource {
         url: "mysql://localhost:3306/test"
     }
