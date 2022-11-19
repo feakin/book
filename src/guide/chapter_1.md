@@ -8,7 +8,79 @@ Feakin 语法可以实现三个阶段：
 - 战术设计。语法：`Aggregate`、`Entity`、`ValueObject`
 - 实现。语法：`impl`
 
-在线编辑器：[https://online.feakin.com/](https://online.feakin.com/)
+## Quick Start
+
+1. 在线编辑器：[https://online.feakin.com/](https://online.feakin.com/)
+2. 在 `Template` -> `DDD Booking` 使用 Feakin 语法设计
+
+```feakin
+ContextMap TicketBooking {
+    Reservation -> Cinema;
+    Reservation -> Movie;
+    Reservation -> User;
+}
+
+Context Reservation {
+  Aggregate Reservation;
+}
+
+Context Cinema {
+  Aggregate Cinema;
+}
+
+Aggregate Cinema {
+  Entity Cinema, ScreeningRoom, Seat;
+}
+```
+
+生成如下图所示的结果：
+
+![Basic Demo](../images/basic.svg)
+
+详细过程：
+
+1. Fklang 编译器会转义 fkl 为 Dot 语法 
+2. Feakin Render 渲染 Dot 语法
+
+生成的 DOT 代码如下所示：
+
+```dot
+digraph TicketBooking2 {
+  component=true;layout=fdp;
+  node [shape=box style=filled];
+  cluster_reservation -> cluster_cinema;
+  cluster_reservation -> cluster_movie;
+  cluster_reservation -> cluster_user;
+
+  subgraph cluster_cinema {
+    label="Cinema(Context)";
+
+    subgraph cluster_aggregate_cinema {
+      label="Cinema(Aggregate)";
+      entity_Cinema [label="Cinema"];
+      entity_ScreeningRoom [label="ScreeningRoom"];
+      entity_Seat [label="Seat"];
+    }
+  }
+
+  subgraph cluster_movie {
+    label="Movie(Context)";
+  }
+
+  subgraph cluster_reservation {
+    label="Reservation(Context)";
+
+    subgraph cluster_aggregate_reservation {
+      label="Reservation(Aggregate)";
+    }
+  }
+
+  subgraph cluster_user {
+    label="User(Context)";
+  }
+}
+```
+
 
 ## DDD Strategy 
 
