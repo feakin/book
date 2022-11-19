@@ -1,5 +1,7 @@
 # Feakin 介绍
 
+![](images/logo.png)
+
 inspired by: [TypeFlow](https://zhuanlan.zhihu.com/p/341089716)
 
 Feakin 是一个软件开发工业化（软件架构设计与开发标准化）方法，基于 DDD （领域驱动设计）与函数式编程思想。
@@ -75,6 +77,14 @@ impl CinemaUpdated {
 }
 ```
 
+## Feakin Web
+
+在线地址：[https://online.feakin.com/](https://online.feakin.com/)
+
+点击 `TEAMPLATES` -> `Feakin Sample` 查看示例
+
+![Feakin Web](images/feakin-web.png)
+
 ## Fklang
 
 下载地址：[https://github.com/feakin/fklang/releases](https://github.com/feakin/fklang/releases)
@@ -101,57 +111,3 @@ fkl gen --main /Users/phodal/IdeaProjects/untitled/simple.fkl --impl CinemaCreat
 ```java
 @GetMapping("/book/{id}")
 public Cinema creatCinema() { }
-```
-
-## Feakin Web
-
-在线地址：[https://online.feakin.com/](https://online.feakin.com/)
-
-![Feakin Web](../images/feakin-web.png)
-
-对应 Fklang 示例：
-
-```feakin
-ContextMap TicketBooking {
-    Reservation -> Cinema;
-    Reservation -> Movie;
-    Reservation -> User;
-}
-
-// nested
-Context Reservation {
-    Aggregate Reservation {
-        Entity Ticket, Reservation;
-    }
-}
-
-// flatten
-Context Cinema {
-  Aggregate Cinema;
-}
-
-Aggregate Cinema {
-  Entity Cinema, ScreeningRoom, Seat;
-}
-
-Entity Cinema { }
-Entity ScreeningRoom { }
-Entity Seat { }
-
-Context Movie {
-    Aggregate Movie {
-        Entity Movie, Actor, Publisher;
-    }
-}
-
-// entity => aggregate root
-Context User {
-    Aggregate User {
-        struct {
-            id: String;
-        }
-    }
-}
-```
-
-
