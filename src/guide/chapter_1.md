@@ -59,3 +59,65 @@ Entity Reservation  {
 }
 ``` 
 
+## 附录：在线示例代码
+
+```
+ContextMap TicketBooking {
+  Reservation -> Cinema;
+  Reservation -> Movie;
+  Reservation -> User;
+}
+
+Context Reservation {
+  Aggregate Reservation;
+}
+
+Aggregate Reservation {
+  Entity Ticket, Reservation;
+}
+
+Entity Reservation  {}
+
+Entity Ticket  {}
+
+Context Cinema {
+  Aggregate Cinema;
+}
+
+Aggregate Cinema {
+  Entity Cinema, ScreeningRoom, Seat;
+}
+
+Entity Cinema { }
+Entity ScreeningRoom { }
+Entity Seat { }
+
+Context Movie {
+  Aggregate Movie;
+}
+
+Aggregate Movie {
+  Entity Movie, Actor, Publisher;
+}
+
+Entity Movie { }
+Entity Actor { }
+Entity Publisher { }
+
+Context User {
+  Aggregate User;
+}
+
+Aggregate User {
+  Entity User;
+}
+
+Entity User {
+}
+
+Entity Payment {
+}
+
+ValueObject Price { }
+ValueObject Notifications { }
+```
