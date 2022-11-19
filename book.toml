@@ -3,7 +3,7 @@ authors = ["Feakin Team"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Feakin Guide"
+title = "Feakin - 软件开发工业化 DSL"
 
 [output.html]
 git-repository-url = "https://github.com/feakin/book"
