@@ -81,8 +81,18 @@ public String gotHello() {
 }
 ```
 
+
+
+在生成代码时，会先检查已有的 Event 是否存在于 Controller 中，如果存在则报错，如果不存在则自动插入。
+
+过程：
+
+1. 使用 TreeSitter 解析目标源码，生成 AST
+2. 查找对应生成的方法是否已经存在
+
 ## Test with Http Request
 
+编写用例：
 
 ```feakin
 impl GitHubOpened {
@@ -99,6 +109,12 @@ impl FeakinJson {
     }
 }
 ```
+
+测试：
+
+![](../images/idea/endpoint-sample.png)
+
+点击 `endpoint` 左侧的运行按钮，即可运行用例。
 
 Run by Cli
 

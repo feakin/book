@@ -1,8 +1,14 @@
 # Chapter 6 - Mock Server
 
+Run by CLI:
+
 ```bash
 $ fkl run --main docs/samples/impl.fkl  --func mock-server --env Local
 ```
+
+Run by IDE:
+
+![Mock Server](../images/idea/mock-server.png)
 
 ## API Mock Server
 

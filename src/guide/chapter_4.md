@@ -26,6 +26,12 @@ layered DDD {
 }
 ```
 
+Run by IDE:
+
+![Guarding](../images/idea/guard-sample.png)
+
+点击 `Guard` 按钮，会自动检查依赖是否符合预期。
+
 Run by CLI:
 
 ```bash
