@@ -1,12 +1,18 @@
-# Feakin 介绍
+# Feakin - 软件开发工业化方法
 
-![](images/logo.png)
+![](images/logo.svg)
 
-inspired by: [TypeFlow](https://zhuanlan.zhihu.com/p/341089716)
-
-Feakin 是一个软件开发工业化（软件架构设计与开发标准化）方法，基于 DDD （领域驱动设计）与函数式编程思想。
+Feakin 是一个软件开发工业化（软件架构设计与开发标准化）方法，基于 DDD （领域驱动设计）与 [TypeFlow](https://zhuanlan.zhihu.com/p/341089716) 编程思想。
 
 ![Design Principles](../images/design-principles.svg)
+
+核心设计理念：
+
+1. 架构孪生：双态绑定。提供架构设计态与实现态的双向绑定，保证架构设计与实现的一致性。 
+2. 显性化设计意图。将软件设计的意图化，借助于 DSL 语言的特性，将意图转换化代码。
+3. 类型与事件驱动。通过事件驱动的方式，将数据类型与领域事件进行绑定。
+
+详细见：《[Design Principles](/design-principles.html) 一节》
 
 Feakin 主要组成部分：
 
@@ -14,12 +20,6 @@ Feakin 主要组成部分：
 - Intellij Plugin 是 Feakin 的一个 IntelliJ 插件，用于将 Feakin/Fklang 集成到项目中。
 - （Todo） Vscode Plugin 是 Feakin 的一个 Vscode 插件，用于将 Feakin/Fklang 集成到项目中。
 - Feakin Web 提供了一个架构设计与可视化协作工具，让架构师能够更加高效地进行架构设计与可视化协作。
-
-设计理念：
-
-1. 架构孪生：双态绑定。提供架构设计态与实现态的双向绑定，保证架构设计与实现的一致性。 
-2. 显性化设计意图。将软件设计的意图化，借助于 DSL 语言的特性，将意图转换化代码。
-3. 类型与事件驱动。通过事件驱动的方式，将数据类型与领域事件进行绑定。
 
 ## Feakin IntelliJ Plugin
 
@@ -58,23 +58,6 @@ impl CinemaCreated {
         response: Cinema;
     }
 }
-
-// DDD 领域事件
-impl CinemaUpdated {
-    endpoint {
-        POST "/book/{id}";
-        request: CinemaUpdatedRequest;
-        authorization: Basic admin admin;
-        response: Cinema;
-    }
-
-    // DDD 内部描述
-    flow {
-        via UserRepository::getUserById receive user: User
-        via UserRepository::save(user: User) receive user: User;
-        via MessageQueue send CinemaCreated to "CinemaCreated"
-    }
-}
 ```
 
 ## Feakin Web
@@ -111,3 +94,4 @@ fkl gen --main /Users/phodal/IdeaProjects/untitled/simple.fkl --impl CinemaCreat
 ```java
 @GetMapping("/book/{id}")
 public Cinema creatCinema() { }
+```

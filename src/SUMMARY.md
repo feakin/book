@@ -1,26 +1,26 @@
 # Summary
 
-[Introduction](README.md)
+[关于 Feakin](README.md)
 
-[Quick Start](./quick-start.md)
+[如何使用](./quick-start.md)
 
-[Design Principles](./design-principles.md)
+[Feakin 设计理念](./design-principles.md)
 
 # User Guide
 
-- [Chapter 1 - DDD in Feakin](./guide/chapter_1.md)
-- [Chapter 2 - Binding Implementation](./guide/chapter_2.md)
-- [Chapter 3 - Code generator](./guide/chapter_3.md)
-- [Chapter 4 - Architecture guarding](./guide/chapter_4.md)
-- [Chapter 5 - HTTP API verify](./guide/chapter_5.md)
-- [Chapter 6 - Engineering](./guide/chapter_6.md)
-- [Chapter 7 - Environment](./guide/chapter_7.md)
+- [使用 Feakin 进行战略设计](./guide/chapter_1.md)
+- [实现 DDD 的战术设计 ](./guide/chapter_2.md)
+- [基于上下文映射与绑定的代码生成](./guide/chapter_3.md)
+- [软件架构守护](./guide/chapter_4.md)
+- [契约驱动的 HTTP API 测试](./guide/chapter_5.md)
+- [Mock Server](./guide/chapter_6.md)
+- [基础设施绑定与环境变量](./guide/chapter_7.md)
 
 # Reference Guide
 
 - [Fklang Specification](./fklang/specification.md)
 
-# Development Guide
+# 开发指南
 
 - [Development Guide](./development/README.md)
   - [Setup](./development/setup.md)
