@@ -28,14 +28,36 @@ Feakin 主要组成部分：
 Fklang 示例：
 
 ```feakin
+// DDD 上下文映射图
+ContextMap TicketBooking {
+    Reservation -> Cinema;
+    Reservation -> Movie;
+    Reservation -> User;
+}
+
+Context Reservation {
+  Aggregate Reservation;
+}
+
+Context Cinema {
+  Aggregate Cinema;
+}
+
+Aggregate Cinema {
+  Entity Cinema, ScreeningRoom, Seat;
+}
+
+// DDD 领域事件
 impl CinemaCreated {
     endpoint {
+        // API 声明与验证
         GET "/book/{id}";
         authorization: Basic admin admin;
         response: Cinema;
     }
 }
 
+// DDD 领域事件
 impl CinemaUpdated {
     endpoint {
         POST "/book/{id}";
@@ -44,6 +66,7 @@ impl CinemaUpdated {
         response: Cinema;
     }
 
+    // DDD 内部描述
     flow {
         via UserRepository::getUserById receive user: User
         via UserRepository::save(user: User) receive user: User;

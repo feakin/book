@@ -85,6 +85,20 @@ let fkl_lang = function (hljs) {
         'layer',
         'dependency',
         'package',
+        'env',
+        'datasource',
+        'server',
+        'kafka',
+        'driver',
+        'port',
+
+        // expression
+        'func',
+        'var',
+        'when',
+        'is',
+        'done',
+
 
         // unsupported
         'binding',
@@ -124,7 +138,7 @@ let fkl_lang = function (hljs) {
     );
     const CLASS_DEFINITION = {
         match: [
-            /(ContextMap|Context|Aggregate|Entity|ValueObject|Struct|impl)/,
+            /(ContextMap|Context|Aggregate|Entity|ValueObject|Struct|impl|env|datasource)/,
             /\s+/,
             hljs.UNDERSCORE_IDENT_RE
         ],
