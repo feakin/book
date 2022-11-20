@@ -37,7 +37,7 @@ attr_type: attr_value;
 
 example:
 
-```
+```feakin
 request: CinemaUpdatedRequest;
 ```
 
@@ -49,7 +49,7 @@ Keyword IDENTIFIER (COMMA  IDENTIFIER)*;
 
 example
 
-```
+```feakin
 Aggregate Ticket {
   Entity Ticket, Seat;
 }
