@@ -6,11 +6,9 @@ Main Resources:
 - [Intellij Rust GitHub](https://github.com/intellij-rust/intellij-rust) (A good example of a custom language plugin)
 - [Intellij Plugin Development](https://www.jetbrains.org/intellij/sdk/docs/welcome.html)
 
-## Syntax BNF
-
-Grammar Kit: [https://github.com/JetBrains/Grammar-Kit](https://github.com/JetBrains/Grammar-Kit)
-
 ## Define by `plugin.xml`
+
+IDEA 
 
 ```xml
 <extensions defaultExtensionNs="com.intellij">
@@ -109,19 +107,94 @@ contextMapDeclaration ::= CONTEXT_MAP_KEYWORD IDENTIFIER contextMapBody
 - FkContextNameReferenceImpl 用于寻找对应的 FkContextDeclaration
 - FkContextDeclReferenceImpl 用于寻找对应的 FkContextName
 
-配置缓存支持两种方式
+配置缓存支持两种方式:
 
 - 通过 `stubIndex` 与 BNF 中的 `stubClass` 配置 Stub。
 - 通过 `CachedValuesManager.getCachedValue` 配置。
 
+
+### 配置 `stubIndex` 与 BNF 中的 `stubClass` 配置 Stub
+
+1. 在 `plugin.xml` 中配置 `stubIndex` 配置缓存元素：
+
+```java
+<stubIndex implementation="com.feakin.intellij.resolve.indexes.FkNamedElementIndex"/>
+```
+
+2. 从 BNF 中配置 `stubClass`：
+
+```bnf
+contextDeclaration ::= CONTEXT_KEYWORD IDENTIFIER contextBody
+{
+  implements = [
+    "com.feakin.intellij.psi.FkNamedElement"
+    "com.feakin.intellij.psi.FkNameIdentifierOwner"
+    "com.feakin.intellij.psi.ext.FkMandatoryReferenceElement"
+  ]
+  mixin = "com.feakin.intellij.stubs.ext.FkContextDeclarationImplMixin"
+  stubClass = "com.feakin.intellij.stubs.FkContextDeclarationStub"
+  elementTypeFactory = "com.feakin.intellij.stubs.StubImplementationsKt.factory"
+}
+```
+
+3. 实现对应的配置
+
 ## Custom LineMarker
+
+自定义 LineMarker 的方式有两种：
+
+- 通过 `LineMarkerProvider` 实现
+- 通过 `RunLineMarkerContributor` 实现
 
 ```xml
 <!-- line marker -->
-<runLineMarkerContributor language="Feakin" implementationClass="com.feakin.intellij.linemarkers.FkEndpointRequestLineMarkerContributor"/>
+<codeInsight.lineMarkerProvider language="Feakin"
+                                implementationClass="com.feakin.intellij.linemarkers.FkImplMessageProvider"/>
 
 <!--  producer -->
 <runConfigurationProducer implementation="com.feakin.intellij.runconfig.command.FkEndpointConfigurationProducer"/>
+```
+
+在 Intellij Feakin 中，先创建 `RunLineMarkerContributor` 后，再创建 `RunConfigurationProducer`，如 `GencodeImplConfigurationProducer`。
+
+```kotlin
+class FkCodegenImplLineMarkerContributor : RunLineMarkerContributor() {
+    override fun getInfo(element: PsiElement): Info? {
+        if (element !is FkImplDeclaration) return null
+        val state = GencodeImplConfigurationProducer().findConfig(listOf(element)) ?: return null
+
+        val actions = ExecutorAction.getActions(0)
+        return Info(
+            AllIcons.RunConfigurations.TestState.Run,
+            { state.configurationName },
+            *actions
+        )
+    }
+}
+```
+
+示例：
+
+```kotlin
+class GencodeImplConfigurationProducer : BaseLazyRunConfigurationProducer<GencodeConfig, FkImplDeclaration>() {
+    override val commandName: String = "gen"
+
+    init {
+        registerConfigProvider { elements -> createConfigFor<FkImplDeclaration>(elements) }
+    }
+
+    private inline fun <reified T : FkImplDeclaration> createConfigFor(
+        elements: List<PsiElement>
+    ): GencodeConfig? {
+        val path = elements.firstOrNull()?.containingFile?.virtualFile?.path ?: return null
+        val sourceElement = elements.firstOrNull { it is T } ?: return null
+        return GencodeConfig(commandName, path, sourceElement as FkImplDeclaration)
+    }
+
+    private fun registerConfigProvider(provider: (List<PsiElement>) -> GencodeConfig?) {
+        runConfigProviders.add(provider)
+    }
+}
 ```
 
 ## FkCommandLine
@@ -137,5 +210,29 @@ class FkCommandLine(
 )
 ```
 
+## Syntax BNF
+
+语法解析，基于 Grammar Kit 来进行解析： [https://github.com/JetBrains/Grammar-Kit](https://github.com/JetBrains/Grammar-Kit)
+
+官方示例如下：
+
+```bnf
+root_rule ::= rule_A rule_B rule_C rule_D                // sequence expression
+rule_A ::= token | 'or_text' | "another_one"             // choice expression
+rule_B ::= [ optional_token ] and_another_one?           // optional expression
+rule_C ::= &required !forbidden                          // predicate expression
+rule_D ::= { can_use_braces + (and_parens) * }           // grouping and repetition
+
+// Grammar-Kit BNF syntax
+
+{ generate=[psi="no"] }                                  // top-level global attributes
+private left rule_with_modifier ::= '+'                  // rule modifiers
+left rule_with_attributes ::= '?' {elementType=rule_D}   // rule attributes
+
+private meta list ::= <<p>> (',' <<p>>) *                // meta rule with parameters
+private list_usage ::= <<list rule_D>>                   // meta rule application
+```
+
 ## LSP (todo)
+
 
