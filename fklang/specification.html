@@ -1,0 +1,656 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Fklang Specification - Feakin - 软件开发工业化 DSL</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">关于 Feakin</a></li><li class="chapter-item expanded affix "><a href="../quick-start.html">如何使用</a></li><li class="chapter-item expanded affix "><a href="../design-principles.html">Feakin 设计理念</a></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="../guide/chapter_1.html"><strong aria-hidden="true">1.</strong> 使用 Feakin 进行战略设计</a></li><li class="chapter-item expanded "><a href="../guide/chapter_2.html"><strong aria-hidden="true">2.</strong> 实现 DDD 的战术设计 </a></li><li class="chapter-item expanded "><a href="../guide/chapter_3.html"><strong aria-hidden="true">3.</strong> 基于上下文映射与绑定的代码生成</a></li><li class="chapter-item expanded "><a href="../guide/chapter_4.html"><strong aria-hidden="true">4.</strong> 软件架构守护</a></li><li class="chapter-item expanded "><a href="../guide/chapter_5.html"><strong aria-hidden="true">5.</strong> 契约驱动的 HTTP API 测试</a></li><li class="chapter-item expanded "><a href="../guide/chapter_6.html"><strong aria-hidden="true">6.</strong> Mock Server</a></li><li class="chapter-item expanded "><a href="../guide/chapter_7.html"><strong aria-hidden="true">7.</strong> 基础设施绑定与环境变量</a></li><li class="chapter-item expanded affix "><li class="part-title">Reference Guide</li><li class="chapter-item expanded "><a href="../fklang/specification.html" class="active"><strong aria-hidden="true">8.</strong> Fklang Specification</a></li><li class="chapter-item expanded affix "><li class="part-title">开发指南</li><li class="chapter-item expanded "><a href="../development/index.html"><strong aria-hidden="true">9.</strong> Development Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../development/setup.html"><strong aria-hidden="true">9.1.</strong> Setup</a></li></ol></li><li class="chapter-item expanded "><a href="../development/collaboration.html"><strong aria-hidden="true">10.</strong> Collaboration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../development/collaboration-crdt.html"><strong aria-hidden="true">10.1.</strong> CRDT</a></li></ol></li><li class="chapter-item expanded "><a href="../development/graph.html"><strong aria-hidden="true">11.</strong> Graph</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../development/graph-gim.html"><strong aria-hidden="true">11.1.</strong> GIM</a></li><li class="chapter-item expanded "><a href="../development/graph-exporter.html"><strong aria-hidden="true">11.2.</strong> Exporter</a></li><li class="chapter-item expanded "><a href="../development/graph-render.html"><strong aria-hidden="true">11.3.</strong> Render</a></li></ol></li><li class="chapter-item expanded "><a href="../fklang/fklang.html"><strong aria-hidden="true">12.</strong> Fklang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../fklang/fklang-parser.html"><strong aria-hidden="true">12.1.</strong> Fklang Parser</a></li><li class="chapter-item expanded "><a href="../fklang/fklang-code-gen.html"><strong aria-hidden="true">12.2.</strong> Fklang Code Generator</a></li><li class="chapter-item expanded "><a href="../fklang/fklang-code-binding.html"><strong aria-hidden="true">12.3.</strong> Fklang Binding</a></li><li class="chapter-item expanded "><a href="../fklang/fklang-build-system.html"><strong aria-hidden="true">12.4.</strong> Fklang Build System</a></li></ol></li><li class="chapter-item expanded "><a href="../development/intellij-plugin.html"><strong aria-hidden="true">13.</strong> Intellij Plugin</a></li><li class="chapter-item expanded "><a href="../development/monaco-editor.html"><strong aria-hidden="true">14.</strong> Monaco Editor</a></li><li class="chapter-item expanded affix "><li class="part-title">FAQ</li><li class="chapter-item expanded "><a href="../faq/index.html"><strong aria-hidden="true">15.</strong> FAQ</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../misc/contributors.html">Contributors</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Feakin - 软件开发工业化 DSL</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/feakin/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/feakin/book/edit/master/src/fklang/specification.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="fklang-specification"><a class="header" href="#fklang-specification">Fklang Specification</a></h1>
+<blockquote>
+<p>Fklang provide a two-way binding between design-implementation for architecture.</p>
+</blockquote>
+<p>Basic Works:</p>
+<ul>
+<li>DDD syntax. DDD strategy and tactic description.</li>
+<li>DomainEvent Implementation. for generate implementation of DomainEvent.</li>
+<li>Binding. mapping DSL to SourceCode</li>
+<li>Layered syntax. layered structured syntax.</li>
+</ul>
+<p>In dev:</p>
+<ul>
+<li>Env for Database.</li>
+<li>SourceSet Plugin. third-part integration, like PlantUml, Swagger.</li>
+</ul>
+<p>Bootstrapping:</p>
+<ul>
+<li>Builtin Types. like Context, Container, or else.</li>
+<li>Description syntax. description design in fake code.</li>
+<li>Typedef (TBD). for DDD syntax type bootstrapping.</li>
+</ul>
+<h2 id="basic-syntax"><a class="header" href="#basic-syntax">Basic Syntax</a></h2>
+<p>关键词基本命名规则：</p>
+<ul>
+<li>DDD 关键词以大写开头，驼峰式命名</li>
+<li>其他以小写开头，避免驼峰</li>
+<li>特殊场景，遵循该领域的命名规则（但是，应该支持全小写）
+<ul>
+<li>例外场景 1：HTTP 请求方法，使用全大写</li>
+</ul>
+</li>
+</ul>
+<h3 id="assign"><a class="header" href="#assign">assign</a></h3>
+<pre><code>attr_type: attr_value;
+</code></pre>
+<p>example:</p>
+<pre><code class="language-feakin">request: CinemaUpdatedRequest;
+</code></pre>
+<h3 id="declare"><a class="header" href="#declare">declare</a></h3>
+<pre><code>Keyword IDENTIFIER (COMMA  IDENTIFIER)*;
+</code></pre>
+<p>example</p>
+<pre><code class="language-feakin">Aggregate Ticket {
+  Entity Ticket, Seat;
+}
+</code></pre>
+<h2 id="ddd"><a class="header" href="#ddd">DDD</a></h2>
+<p>DDD Syntax:</p>
+<table><thead><tr><th>decl</th><th></th><th>usage</th></tr></thead><tbody>
+<tr><td>context_map_decl</td><td>:</td><td>[ 'ContextMap' ] [ ID ] '{' (context_node_decl | context_node_rel ) '}'</td></tr>
+<tr><td></td><td>|</td><td>att_list</td></tr>
+<tr><td>context_node_decl</td><td>:</td><td>['context'] [ID]</td></tr>
+<tr><td>context_node_rel</td><td>:</td><td>[ ID ] rel_symbol [ ID ]</td></tr>
+<tr><td>rel_symbol</td><td>:</td><td>('-&gt;' | '&lt;-' | '&lt;-&gt;')</td></tr>
+<tr><td>context_decl</td><td>:</td><td>[ 'Context' ] [ ID ] '{' aggregate_list? '}'</td></tr>
+<tr><td></td><td>|</td><td>att_list</td></tr>
+<tr><td>att_list</td><td>:</td><td>attr_item+</td></tr>
+<tr><td>attr_item</td><td>:</td><td>([ ID ] '=' [ value ] ','?)* ';'?</td></tr>
+<tr><td></td><td>|</td><td>([ ID ] ':' [ value ] ','?)* ';'?</td></tr>
+<tr><td></td><td>|</td><td>[ ID ] ([ value, ',' ])*     ';'?</td></tr>
+<tr><td>aggregate_decl</td><td>:</td><td>[ 'Aggregate' ]  [ ID ] '{' entity_list '}'</td></tr>
+<tr><td></td><td>|</td><td>att_list</td></tr>
+<tr><td>entity_decl</td><td>:</td><td>[ 'Entity' ] [ ID ] '{' value_object_list '}'</td></tr>
+<tr><td></td><td>|</td><td>att_list</td></tr>
+<tr><td>value_object__decl</td><td>:</td><td>[ 'ValueObject' ] [ ID ] '{' value_list '}'</td></tr>
+<tr><td></td><td>|</td><td>att_list</td></tr>
+</tbody></table>
+<h3 id="sample"><a class="header" href="#sample">Sample</a></h3>
+<pre><code class="language-feakin">ContextMap Ticket {}
+
+Context ShoppingCarContext {}
+
+// render wtih UML styled?
+Aggregate Cart {
+  &quot;&quot;&quot; inline doc sample
+  just-demo for test
+  &quot;&quot;&quot;
+  DomainEvent CartCreated, CartItemAdded, CartItemRemoved, CartItemQuantityChanged, CartCheckedOut;
+  DomainEvent CartItemQuantityChanged;
+
+  Entity Cart;
+}
+
+Entity Cart {
+  // it's to many, can change in different way.
+  ValueObject CartId
+  ValueObject CartStatus
+  ValueObject CartItem
+  ValueObject CartItemQuantity
+  ValueObject CartItemPrice
+  ValueObject CartItemTotal
+  ValueObject CartTotal
+}
+</code></pre>
+<h2 id="domainevent-implementation"><a class="header" href="#domainevent-implementation">DomainEvent Implementation</a></h2>
+<p>Subscribe / Publish / Event / Flow</p>
+<h3 id="api"><a class="header" href="#api">API</a></h3>
+<ul>
+<li>input -&gt; request
+<ul>
+<li>pre-validate</li>
+</ul>
+</li>
+<li>output -&gt; response
+<ul>
+<li>post-validate</li>
+</ul>
+</li>
+<li>process -&gt; flow
+<ul>
+<li>tasking</li>
+</ul>
+</li>
+</ul>
+<p>compare to <code>given-when-then</code>.</p>
+<pre><code class="language-feakin">impl CinemaCreated {
+  endpoint {
+    POST &quot;${uri}/post&quot;;
+    request: Request;
+    authorization: Basic &quot;{{username}}&quot; &quot;{{password}}&quot;;
+  }
+  
+  // created in ApplicationService
+  flow {
+    via UserRepository::getUserById() receive user: User
+    // send &quot;book.created&quot; to Kafka
+    via UserRepository::saveUser(user: User) receive void
+    // or
+    via UserRepository::save(user: User) receive user: User;
+    // message queue
+    via MessageQueue send CinemaCreated to &quot;CinemaCreated&quot;
+    // http request
+    via HTTP::post() send Message to &quot;${uri}/post&quot;
+    // grpc Greeter
+    via GRPC::Greeter send CinemaCreated to &quot;CinemaCreated&quot;
+    // map filter
+    when(isUserValid) {
+      is true =&gt; {
+        // do something
+      }
+      is false =&gt; {
+        // do something
+      }
+    } 
+  }
+}
+</code></pre>
+<p>expect generate code will be:</p>
+<pre><code class="language-java">// get_user_by_user_id from JPA
+public User getUserByUserId(String userId) {
+  return userRepository.findByUserId(userId);
+}
+
+// get_user_by_user_id from MyBatis
+public User getUserByUserId(String userId) {
+  return userMapper.getUserByUserId(userId);
+}
+</code></pre>
+<h2 id="binding"><a class="header" href="#binding">Binding</a></h2>
+<blockquote>
+<p>Binding provide a way to binding source code to Context</p>
+</blockquote>
+<pre><code class="language-feakin">Aggregate Ticket {
+  DomainEvent TicketCreated, TicketUpdated, TicketDeleted;
+}
+
+// or to service ?
+impl TicketBinding {
+  aggregate: Ticket; 
+  endpoint {
+    GET &quot;/ticket/{id}&quot;;
+    request: GetTicketRequest;
+    authorization: Basic admin admin;
+    response: Ticket;
+  }
+}
+
+//define config: ExtraConfig {
+//  baseUrl: &quot;/ticket&quot;;
+//  language: &quot;Java&quot;;
+//  package: &quot;com.phodal.coco&quot;;
+//}
+</code></pre>
+<p>If no config, will use default config by scanner?</p>
+<h2 id="sourceset-tbd"><a class="header" href="#sourceset-tbd">SourceSet (TBD)</a></h2>
+<blockquote>
+<p>SourceSet is design for support 3rd-party dsl, like PlantUML, Swagger.yaml</p>
+</blockquote>
+<table><thead><tr><th>decl</th><th></th><th>usage</th></tr></thead><tbody>
+<tr><td>source_set_decl</td><td>:</td><td>simple_source_set_decl</td></tr>
+<tr><td></td><td>|</td><td>space_source_set_decl</td></tr>
+<tr><td>space_source_set_decl</td><td>:</td><td>[ 'SourceSet' ] [ ID ] '{' att_list '}'</td></tr>
+<tr><td>simple_source_set_decl</td><td>:</td><td>[ 'SourceSet' ] [ ID ] '(' att_list ')'</td></tr>
+<tr><td>implementation_decl</td><td>:</td><td>[ 'impl' ] [ID] '{' (inline_doc) '}'</td></tr>
+</tbody></table>
+<h3 id="plantuml-for-structure"><a class="header" href="#plantuml-for-structure">PlantUML for Structure</a></h3>
+<p>file_type: uml, puml</p>
+<pre><code class="language-feakin">SourceSet sourceSet {
+  feakin {
+    srcDir: [&quot;src/main/resources/uml&quot;]
+  }
+  puml {
+    parser: &quot;PlantUML&quot;
+    srcDir: [&quot;src/main/resources/uml&quot;]
+  }
+}
+</code></pre>
+<h3 id="swagger-api-tbd"><a class="header" href="#swagger-api-tbd">Swagger API (TBD)</a></h3>
+<p>file_type: Yaml, JSON</p>
+<p>with: XPath</p>
+<p>refs:</p>
+<ul>
+<li>xpath syntax: <a href="https://github.com/antlr/grammars-v4/blob/master/xpath/xpath31/XPath31.g4">https://github.com/antlr/grammars-v4/blob/master/xpath/xpath31/XPath31.g4</a></li>
+</ul>
+<p>//</p>
+<pre><code class="language-feakin">SourceSet petSwagger {
+  swagger {
+    parser: &quot;Swagger&quot;
+    srcDir: [&quot;src/main/resources/swagger&quot;]
+    xpath: &quot;/definitions/Pet&quot;
+  }
+}
+
+// with XPath
+</code></pre>
+<h3 id="uniquelanguage-model--tbd"><a class="header" href="#uniquelanguage-model--tbd">UniqueLanguage model ? (TBD)</a></h3>
+<p>file_type: CSV, JSON, Markdown ?</p>
+<pre><code class="language-feakin">SourceSet TicketLang {
+  UniqueLanguage {
+    srcDir: &quot;ticket.csv&quot;;
+    type: UniqueLanguage;
+    prefix: &quot;Ticket&quot;;
+  }
+}
+</code></pre>
+<h2 id="layered"><a class="header" href="#layered">Layered</a></h2>
+<blockquote>
+<p>Layered is design for decl</p>
+</blockquote>
+<table><thead><tr><th>decl</th><th></th><th>usage</th></tr></thead><tbody>
+<tr><td>layered_decl</td><td>:</td><td>'layered' ([ ID ] | 'default' )  '{' layered_body? '}'</td></tr>
+<tr><td>layered_body</td><td>:</td><td>layer_dependency</td></tr>
+<tr><td></td><td>|</td><td>layer_item_decl</td></tr>
+<tr><td>layer_item_decl</td><td>:</td><td>'layer' [ ID ] '{' layer_item_entry* '}'</td></tr>
+<tr><td>layer_item_entry</td><td>:</td><td>package_decl</td></tr>
+<tr><td>package_decl</td><td>:</td><td>'package' ':' [ string ]</td></tr>
+</tbody></table>
+<p>can be guarding for model</p>
+<pre><code class="language-feakin">layered DDD {
+  dependency {
+    &quot;interface&quot; -&gt; &quot;application&quot;
+    &quot;interface&quot; -&gt; &quot;domain&quot;
+    &quot;domain&quot; -&gt; &quot;application&quot;
+    &quot;application&quot; -&gt; &quot;infrastructure&quot;
+    &quot;interface&quot; -&gt; &quot;infrastructure&quot;
+  }
+  layer interface {
+     package: &quot;com.example.book&quot;
+  }
+  layer domain {
+     package: &quot;com.example.domain&quot;
+  }
+  layer application {
+    package: &quot;com.example.application&quot;
+  }
+  layer infrastructure {
+    package: &quot;com.example.infrastructure&quot;
+  }
+}
+</code></pre>
+<h2 id="env"><a class="header" href="#env">Env</a></h2>
+<p>For database and mock server</p>
+<pre><code class="language-feakin">env Local {
+  datasource {
+    driver: postgresql
+    host: &quot;localhost&quot;
+    port: 5432
+    database: &quot;test&quot;
+  }
+  server {
+    port: 9090;
+  }
+}
+</code></pre>
+<h2 id="with-api-testing-todo"><a class="header" href="#with-api-testing-todo">with API testing (Todo)</a></h2>
+<p>with Help utils function</p>
+<ul>
+<li>builtin-functions: mock server</li>
+<li>builtin-functions: verify server for testing contract</li>
+</ul>
+<pre><code class="language-feakin">impl CinemaCreated {
+  endpoint {
+    GET &quot;/book/{id}&quot;;
+    request: CreateBookRequest;
+    authorization: Basic admin admin;
+    response: Cinema;
+
+    // a mock server for testing
+    mock {
+       port: 8080;
+    };
+    verify {
+       env: Local;
+       expect {
+        &quot;status&quot;: 200
+        &quot;data&quot;: {
+          // build in APIs ?
+          &quot;id&quot;: {{$uuid}};
+          &quot;price&quot;: {{$randomInt}};
+          &quot;ts&quot;: {{$timestamp}};
+          &quot;value&quot;: &quot;content&quot;
+        }
+    }
+  }
+
+  // full processing (TBD)
+  request CreateBookRequest {
+//    schema =&gt; data,
+//    schema {
+//      &quot;title&quot; : &quot;string&quot;,
+//      &quot;author&quot; : &quot;string&quot;,
+//      &quot;price&quot; : &quot;number&quot;
+//    }
+    data {
+      &quot;title&quot; : &quot;The Lord of the Rings&quot;,
+      &quot;author&quot; : &quot;J.R.R. Tolkien&quot;,
+      &quot;price&quot; : 29.99
+    }
+    validate {
+      // title.length &gt; 10 ? 
+      title  {
+        required { min: 3, max: 10 }
+        pattern { regex: &quot;^[a-zA-Z0-9]+$&quot; }
+        range { min: 1, max: 100 }
+      }
+    } 
+  } 
+  
+  middle {
+    via User get/update/delete/post userId 
+    via Kafka send &quot;book.created&quot;
+  }
+
+  response CreateBookResponse {
+     struct {
+        &quot;id&quot; : &quot;number&quot;
+     }
+     validate  { }
+  } 
+  
+  // with source side (TBD)
+  output CreateBookResponse(xpath=&quot;&quot;);
+  input CreateBookResponse(sourceSet=&quot;PetSwagger&quot; location=&quot;&quot;);
+}
+
+
+env Local {
+  host: &quot;http://localhost:8080&quot;;
+}
+</code></pre>
+<h3 id="default-impl-config-tbd"><a class="header" href="#default-impl-config-tbd">Default impl config (TBD)</a></h3>
+<pre><code class="language-feakin">var config: Config {
+  language: &quot;feakin&quot;
+  framework: &quot;Spring&quot;
+  message: &quot;Kafka&quot; 
+  dao: &quot;JPA&quot;
+  cache: &quot;Redis&quot;
+  search: &quot;ElasticSearch&quot;
+}
+</code></pre>
+<h2 id="bootstrapping"><a class="header" href="#bootstrapping">Bootstrapping</a></h2>
+<p>Typedef (TBD)</p>
+<blockquote>
+<p>Typedef provide custom syntax like container or others, can support for bootstrapping DDD syntax.</p>
+</blockquote>
+<h3 id="buildin-types"><a class="header" href="#buildin-types">BuildIn Types</a></h3>
+<p>Basic Types</p>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td>identifier</td><td>unique identifier</td></tr>
+<tr><td>binary</td><td>Any binary data</td></tr>
+<tr><td>bits</td><td>A set of bits or flags</td></tr>
+<tr><td>boolean</td><td>&quot;true&quot; or &quot;false&quot;</td></tr>
+<tr><td>enumeration</td><td>Enumerated strings</td></tr>
+<tr><td>string</td><td>string</td></tr>
+<tr><td>number</td><td>Any number, can be float or int</td></tr>
+<tr><td>optional ?</td><td>Optional type ?</td></tr>
+</tbody></table>
+<p>Data Types ?</p>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td>Table</td><td>Table data</td></tr>
+<tr><td>List</td><td>List data</td></tr>
+<tr><td>Map</td><td>Map data</td></tr>
+<tr><td>Set</td><td>Set data</td></tr>
+<tr><td>Tuple</td><td>Tuple data</td></tr>
+<tr><td>Object</td><td>Object data</td></tr>
+<tr><td>Array</td><td>Array data</td></tr>
+<tr><td>Date</td><td>Date data</td></tr>
+<tr><td>Time</td><td>Time data</td></tr>
+<tr><td>DateTime</td><td>DateTime data</td></tr>
+<tr><td>Duration</td><td>Duration data</td></tr>
+<tr><td>Interval</td><td>Interval data</td></tr>
+</tbody></table>
+<h3 id="variable"><a class="header" href="#variable">Variable</a></h3>
+<pre><code class="language-feakin">var source: JavaSource {
+  language: &quot;Java&quot;;
+  package: &quot;com.phodal.coco&quot;;
+}
+</code></pre>
+<h4 id="container"><a class="header" href="#container">Container</a></h4>
+<pre><code class="language-feakin">def ContextMap {
+    // todo: parser generator    
+}
+</code></pre>
+<table><thead><tr><th>decl</th><th></th><th>usage</th></tr></thead><tbody>
+<tr><td>typedef_decl</td><td>:</td><td>[ 'typedef'] '(' metaType ')' ID '{' (decl_list) '}';</td></tr>
+<tr><td>decl_list</td><td>:</td><td>decl_item*</td></tr>
+<tr><td>decl_item</td><td>:</td><td>[ID] ':' decl_name</td></tr>
+</tbody></table>
+<h3 id="expression"><a class="header" href="#expression">Expression</a></h3>
+<p>Description Syntax:</p>
+<table><thead><tr><th>decl</th><th></th><th>usage</th></tr></thead><tbody>
+<tr><td>description_decl</td><td>:</td><td>[ ID ] '{' expr* '}'</td></tr>
+<tr><td>expr</td><td>:</td><td>if_expr</td></tr>
+<tr><td></td><td>|</td><td>choose_expr</td></tr>
+<tr><td></td><td>|</td><td>behavior_expr</td></tr>
+<tr><td>if_expr</td><td>:</td><td>[ 'if' ] '(' [ expression ]  ')'</td></tr>
+<tr><td>when_expr</td><td>:</td><td>[ 'when' ] '(' [ expression ]  ')'</td></tr>
+<tr><td>behavior_expr</td><td>:</td><td>['via'] [ ID ] action [ID]</td></tr>
+<tr><td>action</td><td>:</td><td>[ 'get' | 'update' | 'delete' | 'create' |  'send']</td></tr>
+</tbody></table>
+<pre><code class="language-feakin">var sample: FakeCode {
+  // if (and ?) then {} else {}
+  when(condition) {
+    is condition1 {
+
+    }
+    is condition2 {
+
+    }
+    else {
+
+    }
+  }
+
+  done
+  operator: &lt;, &gt;, &gt;=, &lt;=, ==, +, -, *, %, /, ?
+  // call
+  via Entity send/ receive Event;
+}
+</code></pre>
+<h3 id="function-bootstrapping"><a class="header" href="#function-bootstrapping">Function (Bootstrapping)</a></h3>
+<ul>
+<li>mock</li>
+<li>verify</li>
+<li>validate</li>
+</ul>
+<pre><code class="language-kotlin">mock {
+
+}
+
+func mock(container: MockContainer) {
+  // steps
+}
+
+fun verify(input: Input, output: Output) {
+  // steps
+}
+
+fun validate(input: Input, output: Output) {
+  // steps
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../guide/chapter_7.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../development/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../guide/chapter_7.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../development/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../assets/custom.js"></script>
+    </body>
+</html>

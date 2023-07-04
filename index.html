@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>关于 Feakin - Feakin - 软件开发工业化 DSL</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html" class="active">关于 Feakin</a></li><li class="chapter-item expanded affix "><a href="quick-start.html">如何使用</a></li><li class="chapter-item expanded affix "><a href="design-principles.html">Feakin 设计理念</a></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="guide/chapter_1.html"><strong aria-hidden="true">1.</strong> 使用 Feakin 进行战略设计</a></li><li class="chapter-item expanded "><a href="guide/chapter_2.html"><strong aria-hidden="true">2.</strong> 实现 DDD 的战术设计 </a></li><li class="chapter-item expanded "><a href="guide/chapter_3.html"><strong aria-hidden="true">3.</strong> 基于上下文映射与绑定的代码生成</a></li><li class="chapter-item expanded "><a href="guide/chapter_4.html"><strong aria-hidden="true">4.</strong> 软件架构守护</a></li><li class="chapter-item expanded "><a href="guide/chapter_5.html"><strong aria-hidden="true">5.</strong> 契约驱动的 HTTP API 测试</a></li><li class="chapter-item expanded "><a href="guide/chapter_6.html"><strong aria-hidden="true">6.</strong> Mock Server</a></li><li class="chapter-item expanded "><a href="guide/chapter_7.html"><strong aria-hidden="true">7.</strong> 基础设施绑定与环境变量</a></li><li class="chapter-item expanded affix "><li class="part-title">Reference Guide</li><li class="chapter-item expanded "><a href="fklang/specification.html"><strong aria-hidden="true">8.</strong> Fklang Specification</a></li><li class="chapter-item expanded affix "><li class="part-title">开发指南</li><li class="chapter-item expanded "><a href="development/index.html"><strong aria-hidden="true">9.</strong> Development Guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="development/setup.html"><strong aria-hidden="true">9.1.</strong> Setup</a></li></ol></li><li class="chapter-item expanded "><a href="development/collaboration.html"><strong aria-hidden="true">10.</strong> Collaboration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="development/collaboration-crdt.html"><strong aria-hidden="true">10.1.</strong> CRDT</a></li></ol></li><li class="chapter-item expanded "><a href="development/graph.html"><strong aria-hidden="true">11.</strong> Graph</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="development/graph-gim.html"><strong aria-hidden="true">11.1.</strong> GIM</a></li><li class="chapter-item expanded "><a href="development/graph-exporter.html"><strong aria-hidden="true">11.2.</strong> Exporter</a></li><li class="chapter-item expanded "><a href="development/graph-render.html"><strong aria-hidden="true">11.3.</strong> Render</a></li></ol></li><li class="chapter-item expanded "><a href="fklang/fklang.html"><strong aria-hidden="true">12.</strong> Fklang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="fklang/fklang-parser.html"><strong aria-hidden="true">12.1.</strong> Fklang Parser</a></li><li class="chapter-item expanded "><a href="fklang/fklang-code-gen.html"><strong aria-hidden="true">12.2.</strong> Fklang Code Generator</a></li><li class="chapter-item expanded "><a href="fklang/fklang-code-binding.html"><strong aria-hidden="true">12.3.</strong> Fklang Binding</a></li><li class="chapter-item expanded "><a href="fklang/fklang-build-system.html"><strong aria-hidden="true">12.4.</strong> Fklang Build System</a></li></ol></li><li class="chapter-item expanded "><a href="development/intellij-plugin.html"><strong aria-hidden="true">13.</strong> Intellij Plugin</a></li><li class="chapter-item expanded "><a href="development/monaco-editor.html"><strong aria-hidden="true">14.</strong> Monaco Editor</a></li><li class="chapter-item expanded affix "><li class="part-title">FAQ</li><li class="chapter-item expanded "><a href="faq/index.html"><strong aria-hidden="true">15.</strong> FAQ</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="misc/contributors.html">Contributors</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Feakin - 软件开发工业化 DSL</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/feakin/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/feakin/book/edit/master/src/README.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="feakin---软件开发工业化方法"><a class="header" href="#feakin---软件开发工业化方法">Feakin - 软件开发工业化方法</a></h1>
+<p><img src="images/logo.svg" alt="" /></p>
+<p>Feakin 是一个软件开发工业化（软件架构设计与开发标准化）方法，基于 DDD （领域驱动设计）与 <a href="https://zhuanlan.zhihu.com/p/341089716">TypeFlow</a> 编程思想。</p>
+<p><img src="../images/design-principles.svg" alt="Design Principles" /></p>
+<p>核心设计理念：</p>
+<ol>
+<li>架构孪生：双态绑定。提供架构设计态与实现态的双向绑定，保证架构设计与实现的一致性。 </li>
+<li>显性化设计意图。将软件设计的意图化，借助于 DSL 语言的特性，将意图转换化代码。</li>
+<li>类型与事件驱动。通过事件驱动的方式，将数据类型与领域事件进行绑定。</li>
+</ol>
+<p>详细见：《<a href="/design-principles.html">Design Principles</a> 一节》</p>
+<p>Feakin 主要组成部分：</p>
+<ul>
+<li>Fklang 是一个基于软件开发工业化思想，设计的架构设计 DSL。以确保软件系统描述与实现的一致性。通过显式化的软件架构设计，用于支持 AI 代码生成系统的嵌入。</li>
+<li>Intellij Plugin 是 Feakin 的一个 IntelliJ 插件，用于将 Feakin/Fklang 集成到项目中。</li>
+<li>（Todo） Vscode Plugin 是 Feakin 的一个 Vscode 插件，用于将 Feakin/Fklang 集成到项目中。</li>
+<li>Feakin Web 提供了一个架构设计与可视化协作工具，让架构师能够更加高效地进行架构设计与可视化协作。</li>
+</ul>
+<h2 id="feakin-intellij-plugin"><a class="header" href="#feakin-intellij-plugin">Feakin IntelliJ Plugin</a></h2>
+<p>安装：<a href="https://plugins.jetbrains.com/plugin/20026-feakin"><img src="https://img.shields.io/jetbrains/plugin/v/20026-feakin.svg" alt="Version" /></a></p>
+<p><img src="../images/feakin-intellij-plugin.png" alt="Feakin Impl Sample" /></p>
+<p>Fklang 示例：</p>
+<pre><code class="language-feakin">// DDD 上下文映射图
+ContextMap TicketBooking {
+    Reservation -&gt; Cinema;
+    Reservation -&gt; Movie;
+    Reservation -&gt; User;
+}
+
+Context Reservation {
+  Aggregate Reservation;
+}
+
+Context Cinema {
+  Aggregate Cinema;
+}
+
+Aggregate Cinema {
+  Entity Cinema, ScreeningRoom, Seat;
+}
+
+// DDD 领域事件
+impl CinemaCreated {
+    endpoint {
+        // API 声明与验证
+        GET &quot;/book/{id}&quot;;
+        authorization: Basic admin admin;
+        response: Cinema;
+    }
+}
+</code></pre>
+<h2 id="feakin-web"><a class="header" href="#feakin-web">Feakin Web</a></h2>
+<p>在线地址：<a href="https://online.feakin.com/">https://online.feakin.com/</a></p>
+<p>点击 <code>TEAMPLATES</code> -&gt; <code>Feakin Sample</code> 查看示例</p>
+<p><img src="images/feakin-web.png" alt="Feakin Web" /></p>
+<h2 id="fklang"><a class="header" href="#fklang">Fklang</a></h2>
+<p>下载地址：<a href="https://github.com/feakin/fklang/releases">https://github.com/feakin/fklang/releases</a></p>
+<pre><code class="language-bash">Usage: fkl &lt;COMMAND&gt;
+
+Commands:
+  gen    Generate code from a fkl file, current support Java
+  dot    Generate dot file from a fkl file
+  parse  Parse a fkl file and print the AST
+  help   Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help  Print help information
+</code></pre>
+<p>CLI 示例：</p>
+<pre><code class="language-bash">fkl gen --main /Users/phodal/IdeaProjects/untitled/simple.fkl --impl CinemaCreated
+</code></pre>
+<pre><code class="language-java">@GetMapping(&quot;/book/{id}&quot;)
+public Cinema creatCinema() { }
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="next" href="quick-start.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="next" href="quick-start.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="assets/custom.js"></script>
+    </body>
+</html>
